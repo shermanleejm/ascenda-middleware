@@ -1,0 +1,34 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: An AWS Serverless Specification template describing your function.
+Resources:
+  s3UploadListener:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: lambda_function.lambda_handler
+      Runtime: python3.8
+      CodeUri: .
+      Description: ''
+      MemorySize: 128
+      Timeout: 300
+      Role: >-
+        arn:aws:iam::731706226892:role/service-role/uploadBatchFile-role-dxu97bim
+      Events:
+        BucketEvent1:
+          Type: S3
+          Properties:
+            Bucket:
+              Ref: Bucket1
+            Events:
+              - 's3:ObjectCreated:*'
+      VpcConfig:
+        SecurityGroupIds:
+          - sg-007ac36b18d75df5f
+        SubnetIds:
+          - subnet-025664adf0602ca48
+          - subnet-034262533c13e31c7
+          - subnet-0e82e659052960d44
+          - subnet-011b66e17c3b9b32e
+          - subnet-029a884180959f1f4
+  Bucket1:
+    Type: 'AWS::S3::Bucket'

@@ -1,0 +1,25 @@
+.overviewContainer {
+    display: flex;
+    align-items: center;
+}
+
+.bankRewardsCard {
+    width: 300;
+    height: 200;
+    background: #172F55;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5%;
+}
+
+.bankRewardsTitle {
+    color: #ffffff;
+    font-size: 25px;
+    width: 150px;
+    text-align: center;
+}
+
+.availableMiles {
+    margin-left: 40px;
+}

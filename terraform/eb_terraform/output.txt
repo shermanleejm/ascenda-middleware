@@ -1,0 +1,1742 @@
+[0m[1mmodule.elastic_beanstalk_environment.data.aws_iam_policy_document.ec2: Refreshing state...[0m
+[0m[1mmodule.subnets.data.aws_availability_zones.available[0]: Refreshing state...[0m
+[0m[1mmodule.elastic_beanstalk_environment.data.aws_iam_policy_document.default: Refreshing state...[0m
+[0m[1mmodule.elastic_beanstalk_environment.data.aws_elb_service_account.main[0]: Refreshing state...[0m
+[0m[1mmodule.elastic_beanstalk_environment.data.aws_iam_policy_document.service: Refreshing state...[0m
+[0m[1mmodule.elastic_beanstalk_environment.data.aws_iam_policy_document.elb_logs[0]: Refreshing state...[0m
+[0m[1mmodule.elastic_beanstalk_environment.data.aws_iam_policy_document.extended: Refreshing state...[0m
+
+An execution plan has been generated and is shown below.
+Resource actions are indicated with the following symbols:
+  [32m+[0m create
+ [36m<=[0m read (data resources)
+[0m
+Terraform will perform the following actions:
+
+[1m  # module.elastic_beanstalk_application.aws_elastic_beanstalk_application.default[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_elastic_beanstalk_application" "default" {
+      [32m+[0m [0m[1m[0marn[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mdescription[0m[0m = "Test elastic_beanstalk_application"
+      [32m+[0m [0m[1m[0mid[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m        = "eg-test-elastic-beanstalk-env"
+      [32m+[0m [0m[1m[0mtags[0m[0m        = {
+          [32m+[0m [0m"Stage" = "test"
+        }
+    }
+
+[1m  # module.elastic_beanstalk_environment.aws_elastic_beanstalk_environment.default[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_elastic_beanstalk_environment" "default" {
+      [32m+[0m [0m[1m[0mall_settings[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mapplication[0m[0m            = "eg-test-elastic-beanstalk-env"
+      [32m+[0m [0m[1m[0marn[0m[0m                    = (known after apply)
+      [32m+[0m [0m[1m[0mautoscaling_groups[0m[0m     = (known after apply)
+      [32m+[0m [0m[1m[0mcname[0m[0m                  = (known after apply)
+      [32m+[0m [0m[1m[0mcname_prefix[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mdescription[0m[0m            = "Test elastic-beanstalk-environment"
+      [32m+[0m [0m[1m[0mendpoint_url[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m                     = (known after apply)
+      [32m+[0m [0m[1m[0minstances[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0mlaunch_configurations[0m[0m  = (known after apply)
+      [32m+[0m [0m[1m[0mload_balancers[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m                   = "eg-test-elastic-beanstalk-env"
+      [32m+[0m [0m[1m[0mplatform_arn[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mqueues[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0msolution_stack_name[0m[0m    = "64bit Amazon Linux 2018.03 v2.12.17 running Docker 18.06.1-ce"
+      [32m+[0m [0m[1m[0mtags[0m[0m                   = {
+          [32m+[0m [0m"Stage" = "test"
+        }
+      [32m+[0m [0m[1m[0mtier[0m[0m                   = "WebServer"
+      [32m+[0m [0m[1m[0mtriggers[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mversion_label[0m[0m          = "itsa_backend-2020-10-15T08-13-57"
+      [32m+[0m [0m[1m[0mwait_for_ready_timeout[0m[0m = "20m"
+
+      [32m+[0m [0msetting {
+          [32m+[0m [0m[1m[0mname[0m[0m      = "AccessLogsS3Bucket"
+          [32m+[0m [0m[1m[0mnamespace[0m[0m = "aws:elbv2:loadbalancer"
+          [32m+[0m [0m[1m[0mvalue[0m[0m     = (known after apply)
+        }
+      [32m+[0m [0msetting {
+          [32m+[0m [0m[1m[0mname[0m[0m      = "AccessLogsS3Enabled"
+          [32m+[0m [0m[1m[0mnamespace[0m[0m = "aws:elbv2:loadbalancer"
+          [32m+[0m [0m[1m[0mvalue[0m[0m     = "true"
+        }
+      [32m+[0m [0msetting {
+          [32m+[0m [0m[1m[0mname[0m[0m      = "AssociatePublicIpAddress"
+          [32m+[0m [0m[1m[0mnamespace[0m[0m = "aws:ec2:vpc"
+          [32m+[0m [0m[1m[0mvalue[0m[0m     = "false"
+        }
+      [32m+[0m [0msetting {
+          [32m+[0m [0m[1m[0mname[0m[0m      = "Availability Zones"
+          [32m+[0m [0m[1m[0mnamespace[0m[0m = "aws:autoscaling:asg"
+          [32m+[0m [0m[1m[0mvalue[0m[0m     = "Any 2"
+        }
+      [32m+[0m [0msetting {
+          [32m+[0m [0m[1m[0mname[0m[0m      = "BASE_HOST"
+          [32m+[0m [0m[1m[0mnamespace[0m[0m = "aws:elasticbeanstalk:application:environment"
+          [32m+[0m [0m[1m[0mvalue[0m[0m     = "elastic-beanstalk-env"
+        }
+      [32m+[0m [0msetting {
+          [32m+[0m [0m[1m[0mname[0m[0m      = "BatchSize"
+          [32m+[0m [0m[1m[0mnamespace[0m[0m = "aws:elasticbeanstalk:command"
+          [32m+[0m [0m[1m[0mvalue[0m[0m     = "1"
+        }
+      [32m+[0m [0msetting {
+          [32m+[0m [0m[1m[0mname[0m[0m      = "BatchSizeType"
+          [32m+[0m [0m[1m[0mnamespace[0m[0m = "aws:elasticbeanstalk:command"
+          [32m+[0m [0m[1m[0mvalue[0m[0m     = "Fixed"
+        }
+      [32m+[0m [0msetting {
+          [32m+[0m [0m[1m[0mname[0m[0m      = "DeleteOnTerminate"
+          [32m+[0m [0m[1m[0mnamespace[0m[0m = "aws:elasticbeanstalk:cloudwatch:logs"
+          [32m+[0m [0m[1m[0mvalue[0m[0m     = "false"
+        }
+      [32m+[0m [0msetting {
+          [32m+[0m [0m[1m[0mname[0m[0m      = "DeleteOnTerminate"
+          [32m+[0m [0m[1m[0mnamespace[0m[0m = "aws:elasticbeanstalk:cloudwatch:logs:health"
+          [32m+[0m [0m[1m[0mvalue[0m[0m     = "false"
+        }
+      [32m+[0m [0msetting {
+          [32m+[0m [0m[1m[0mname[0m[0m      = "DeploymentPolicy"
+          [32m+[0m [0m[1m[0mnamespace[0m[0m = "aws:elasticbeanstalk:command"
+          [32m+[0m [0m[1m[0mvalue[0m[0m     = "Rolling"
+        }
+      [32m+[0m [0msetting {
+          [32m+[0m [0m[1m[0mname[0m[0m      = "EC2KeyName"
+          [32m+[0m [0m[1m[0mnamespace[0m[0m = "aws:autoscaling:launchconfiguration"
+        }
+      [32m+[0m [0msetting {
+          [32m+[0m [0m[1m[0mname[0m[0m      = "ELBScheme"
+          [32m+[0m [0m[1m[0mnamespace[0m[0m = "aws:ec2:vpc"
+          [32m+[0m [0m[1m[0mvalue[0m[0m     = "public"
+        }
+      [32m+[0m [0msetting {
+          [32m+[0m [0m[1m[0mname[0m[0m      = "ELBSubnets"
+          [32m+[0m [0m[1m[0mnamespace[0m[0m = "aws:ec2:vpc"
+          [32m+[0m [0m[1m[0mvalue[0m[0m     = (known after apply)
+        }
+      [32m+[0m [0msetting {
+          [32m+[0m [0m[1m[0mname[0m[0m      = "EnableSpot"
+          [32m+[0m [0m[1m[0mnamespace[0m[0m = "aws:ec2:instances"
+          [32m+[0m [0m[1m[0mvalue[0m[0m     = "false"
+        }
+      [32m+[0m [0msetting {
+          [32m+[0m [0m[1m[0mname[0m[0m      = "EnvironmentType"
+          [32m+[0m [0m[1m[0mnamespace[0m[0m = "aws:elasticbeanstalk:environment"
+          [32m+[0m [0m[1m[0mvalue[0m[0m     = "LoadBalanced"
+        }
+      [32m+[0m [0msetting {
+          [32m+[0m [0m[1m[0mname[0m[0m      = "HealthCheckPath"
+          [32m+[0m [0m[1m[0mnamespace[0m[0m = "aws:elasticbeanstalk:environment:process:default"
+          [32m+[0m [0m[1m[0mvalue[0m[0m     = "/"
+        }
+      [32m+[0m [0msetting {
+          [32m+[0m [0m[1m[0mname[0m[0m      = "HealthStreamingEnabled"
+          [32m+[0m [0m[1m[0mnamespace[0m[0m = "aws:elasticbeanstalk:cloudwatch:logs:health"
+          [32m+[0m [0m[1m[0mvalue[0m[0m     = "false"
+        }
+      [32m+[0m [0msetting {
+          [32m+[0m [0m[1m[0mname[0m[0m      = "IamInstanceProfile"
+          [32m+[0m [0m[1m[0mnamespace[0m[0m = "aws:autoscaling:launchconfiguration"
+          [32m+[0m [0m[1m[0mvalue[0m[0m     = "eg-test-elastic-beanstalk-env-eb-ec2"
+        }
+      [32m+[0m [0msetting {
+          [32m+[0m [0m[1m[0mname[0m[0m      = "IgnoreHealthCheck"
+          [32m+[0m [0m[1m[0mnamespace[0m[0m = "aws:elasticbeanstalk:command"
+          [32m+[0m [0m[1m[0mvalue[0m[0m     = "false"
+        }
+      [32m+[0m [0msetting {
+          [32m+[0m [0m[1m[0mname[0m[0m      = "InstanceRefreshEnabled"
+          [32m+[0m [0m[1m[0mnamespace[0m[0m = "aws:elasticbeanstalk:managedactions:platformupdate"
+          [32m+[0m [0m[1m[0mvalue[0m[0m     = "true"
+        }
+      [32m+[0m [0msetting {
+          [32m+[0m [0m[1m[0mname[0m[0m      = "InstanceTypes"
+          [32m+[0m [0m[1m[0mnamespace[0m[0m = "aws:ec2:instances"
+          [32m+[0m [0m[1m[0mvalue[0m[0m     = "t2.micro"
+        }
+      [32m+[0m [0msetting {
+          [32m+[0m [0m[1m[0mname[0m[0m      = "ListenerEnabled"
+          [32m+[0m [0m[1m[0mnamespace[0m[0m = "aws:elbv2:listener:443"
+          [32m+[0m [0m[1m[0mvalue[0m[0m     = "false"
+        }
+      [32m+[0m [0msetting {
+          [32m+[0m [0m[1m[0mname[0m[0m      = "ListenerEnabled"
+          [32m+[0m [0m[1m[0mnamespace[0m[0m = "aws:elbv2:listener:default"
+          [32m+[0m [0m[1m[0mvalue[0m[0m     = "true"
+        }
+      [32m+[0m [0msetting {
+          [32m+[0m [0m[1m[0mname[0m[0m      = "LoadBalancerType"
+          [32m+[0m [0m[1m[0mnamespace[0m[0m = "aws:elasticbeanstalk:environment"
+          [32m+[0m [0m[1m[0mvalue[0m[0m     = "application"
+        }
+      [32m+[0m [0msetting {
+          [32m+[0m [0m[1m[0mname[0m[0m      = "LogPublicationControl"
+          [32m+[0m [0m[1m[0mnamespace[0m[0m = "aws:elasticbeanstalk:hostmanager"
+          [32m+[0m [0m[1m[0mvalue[0m[0m     = "false"
+        }
+      [32m+[0m [0msetting {
+          [32m+[0m [0m[1m[0mname[0m[0m      = "LowerBreachScaleIncrement"
+          [32m+[0m [0m[1m[0mnamespace[0m[0m = "aws:autoscaling:trigger"
+          [32m+[0m [0m[1m[0mvalue[0m[0m     = "-1"
+        }
+      [32m+[0m [0msetting {
+          [32m+[0m [0m[1m[0mname[0m[0m      = "LowerThreshold"
+          [32m+[0m [0m[1m[0mnamespace[0m[0m = "aws:autoscaling:trigger"
+          [32m+[0m [0m[1m[0mvalue[0m[0m     = "20"
+        }
+      [32m+[0m [0msetting {
+          [32m+[0m [0m[1m[0mname[0m[0m      = "ManagedActionsEnabled"
+          [32m+[0m [0m[1m[0mnamespace[0m[0m = "aws:elasticbeanstalk:managedactions"
+          [32m+[0m [0m[1m[0mvalue[0m[0m     = "false"
+        }
+      [32m+[0m [0msetting {
+          [32m+[0m [0m[1m[0mname[0m[0m      = "ManagedActionsEnabled"
+          [32m+[0m [0m[1m[0mnamespace[0m[0m = "aws:elasticbeanstalk:managedactions"
+          [32m+[0m [0m[1m[0mvalue[0m[0m     = "true"
+        }
+      [32m+[0m [0msetting {
+          [32m+[0m [0m[1m[0mname[0m[0m      = "ManagedSecurityGroup"
+          [32m+[0m [0m[1m[0mnamespace[0m[0m = "aws:elbv2:loadbalancer"
+        }
+      [32m+[0m [0msetting {
+          [32m+[0m [0m[1m[0mname[0m[0m      = "MaxBatchSize"
+          [32m+[0m [0m[1m[0mnamespace[0m[0m = "aws:autoscaling:updatepolicy:rollingupdate"
+          [32m+[0m [0m[1m[0mvalue[0m[0m     = "1"
+        }
+      [32m+[0m [0msetting {
+          [32m+[0m [0m[1m[0mname[0m[0m      = "MaxSize"
+          [32m+[0m [0m[1m[0mnamespace[0m[0m = "aws:autoscaling:asg"
+          [32m+[0m [0m[1m[0mvalue[0m[0m     = "2"
+        }
+      [32m+[0m [0msetting {
+          [32m+[0m [0m[1m[0mname[0m[0m      = "MeasureName"
+          [32m+[0m [0m[1m[0mnamespace[0m[0m = "aws:autoscaling:trigger"
+          [32m+[0m [0m[1m[0mvalue[0m[0m     = "CPUUtilization"
+        }
+      [32m+[0m [0msetting {
+          [32m+[0m [0m[1m[0mname[0m[0m      = "MinInstancesInService"
+          [32m+[0m [0m[1m[0mnamespace[0m[0m = "aws:autoscaling:updatepolicy:rollingupdate"
+          [32m+[0m [0m[1m[0mvalue[0m[0m     = "0"
+        }
+      [32m+[0m [0msetting {
+          [32m+[0m [0m[1m[0mname[0m[0m      = "MinSize"
+          [32m+[0m [0m[1m[0mnamespace[0m[0m = "aws:autoscaling:asg"
+          [32m+[0m [0m[1m[0mvalue[0m[0m     = "1"
+        }
+      [32m+[0m [0msetting {
+          [32m+[0m [0m[1m[0mname[0m[0m      = "Port"
+          [32m+[0m [0m[1m[0mnamespace[0m[0m = "aws:elasticbeanstalk:environment:process:default"
+          [32m+[0m [0m[1m[0mvalue[0m[0m     = "80"
+        }
+      [32m+[0m [0msetting {
+          [32m+[0m [0m[1m[0mname[0m[0m      = "PreferredStartTime"
+          [32m+[0m [0m[1m[0mnamespace[0m[0m = "aws:elasticbeanstalk:managedactions"
+          [32m+[0m [0m[1m[0mvalue[0m[0m     = "Sun:10:00"
+        }
+      [32m+[0m [0msetting {
+          [32m+[0m [0m[1m[0mname[0m[0m      = "Protocol"
+          [32m+[0m [0m[1m[0mnamespace[0m[0m = "aws:elasticbeanstalk:environment:process:default"
+          [32m+[0m [0m[1m[0mvalue[0m[0m     = "HTTP"
+        }
+      [32m+[0m [0msetting {
+          [32m+[0m [0m[1m[0mname[0m[0m      = "Protocol"
+          [32m+[0m [0m[1m[0mnamespace[0m[0m = "aws:elbv2:listener:443"
+          [32m+[0m [0m[1m[0mvalue[0m[0m     = "HTTPS"
+        }
+      [32m+[0m [0msetting {
+          [32m+[0m [0m[1m[0mname[0m[0m      = "RetentionInDays"
+          [32m+[0m [0m[1m[0mnamespace[0m[0m = "aws:elasticbeanstalk:cloudwatch:logs"
+          [32m+[0m [0m[1m[0mvalue[0m[0m     = "7"
+        }
+      [32m+[0m [0msetting {
+          [32m+[0m [0m[1m[0mname[0m[0m      = "RetentionInDays"
+          [32m+[0m [0m[1m[0mnamespace[0m[0m = "aws:elasticbeanstalk:cloudwatch:logs:health"
+          [32m+[0m [0m[1m[0mvalue[0m[0m     = "7"
+        }
+      [32m+[0m [0msetting {
+          [32m+[0m [0m[1m[0mname[0m[0m      = "RollingUpdateEnabled"
+          [32m+[0m [0m[1m[0mnamespace[0m[0m = "aws:autoscaling:updatepolicy:rollingupdate"
+          [32m+[0m [0m[1m[0mvalue[0m[0m     = "true"
+        }
+      [32m+[0m [0msetting {
+          [32m+[0m [0m[1m[0mname[0m[0m      = "RollingUpdateType"
+          [32m+[0m [0m[1m[0mnamespace[0m[0m = "aws:autoscaling:updatepolicy:rollingupdate"
+          [32m+[0m [0m[1m[0mvalue[0m[0m     = "Health"
+        }
+      [32m+[0m [0msetting {
+          [32m+[0m [0m[1m[0mname[0m[0m      = "RootVolumeSize"
+          [32m+[0m [0m[1m[0mnamespace[0m[0m = "aws:autoscaling:launchconfiguration"
+          [32m+[0m [0m[1m[0mvalue[0m[0m     = "8"
+        }
+      [32m+[0m [0msetting {
+          [32m+[0m [0m[1m[0mname[0m[0m      = "RootVolumeType"
+          [32m+[0m [0m[1m[0mnamespace[0m[0m = "aws:autoscaling:launchconfiguration"
+          [32m+[0m [0m[1m[0mvalue[0m[0m     = "gp2"
+        }
+      [32m+[0m [0msetting {
+          [32m+[0m [0m[1m[0mname[0m[0m      = "SSLCertificateArns"
+          [32m+[0m [0m[1m[0mnamespace[0m[0m = "aws:elbv2:listener:443"
+        }
+      [32m+[0m [0msetting {
+          [32m+[0m [0m[1m[0mname[0m[0m      = "SSLPolicy"
+          [32m+[0m [0m[1m[0mnamespace[0m[0m = "aws:elbv2:listener:443"
+        }
+      [32m+[0m [0msetting {
+          [32m+[0m [0m[1m[0mname[0m[0m      = "SecurityGroups"
+          [32m+[0m [0m[1m[0mnamespace[0m[0m = "aws:autoscaling:launchconfiguration"
+          [32m+[0m [0m[1m[0mvalue[0m[0m     = (known after apply)
+        }
+      [32m+[0m [0msetting {
+          [32m+[0m [0m[1m[0mname[0m[0m      = "SecurityGroups"
+          [32m+[0m [0m[1m[0mnamespace[0m[0m = "aws:elbv2:loadbalancer"
+        }
+      [32m+[0m [0msetting {
+          [32m+[0m [0m[1m[0mname[0m[0m      = "ServiceRole"
+          [32m+[0m [0m[1m[0mnamespace[0m[0m = "aws:elasticbeanstalk:environment"
+          [32m+[0m [0m[1m[0mvalue[0m[0m     = "eg-test-elastic-beanstalk-env-eb-service"
+        }
+      [32m+[0m [0msetting {
+          [32m+[0m [0m[1m[0mname[0m[0m      = "SpotFleetOnDemandAboveBasePercentage"
+          [32m+[0m [0m[1m[0mnamespace[0m[0m = "aws:ec2:instances"
+          [32m+[0m [0m[1m[0mvalue[0m[0m     = "70"
+        }
+      [32m+[0m [0msetting {
+          [32m+[0m [0m[1m[0mname[0m[0m      = "SpotFleetOnDemandBase"
+          [32m+[0m [0m[1m[0mnamespace[0m[0m = "aws:ec2:instances"
+          [32m+[0m [0m[1m[0mvalue[0m[0m     = "0"
+        }
+      [32m+[0m [0msetting {
+          [32m+[0m [0m[1m[0mname[0m[0m      = "SpotMaxPrice"
+          [32m+[0m [0m[1m[0mnamespace[0m[0m = "aws:ec2:instances"
+        }
+      [32m+[0m [0msetting {
+          [32m+[0m [0m[1m[0mname[0m[0m      = "Statistic"
+          [32m+[0m [0m[1m[0mnamespace[0m[0m = "aws:autoscaling:trigger"
+          [32m+[0m [0m[1m[0mvalue[0m[0m     = "Average"
+        }
+      [32m+[0m [0msetting {
+          [32m+[0m [0m[1m[0mname[0m[0m      = "StickinessEnabled"
+          [32m+[0m [0m[1m[0mnamespace[0m[0m = "aws:elasticbeanstalk:environment:process:default"
+          [32m+[0m [0m[1m[0mvalue[0m[0m     = "false"
+        }
+      [32m+[0m [0msetting {
+          [32m+[0m [0m[1m[0mname[0m[0m      = "StreamLogs"
+          [32m+[0m [0m[1m[0mnamespace[0m[0m = "aws:elasticbeanstalk:cloudwatch:logs"
+          [32m+[0m [0m[1m[0mvalue[0m[0m     = "false"
+        }
+      [32m+[0m [0msetting {
+          [32m+[0m [0m[1m[0mname[0m[0m      = "Subnets"
+          [32m+[0m [0m[1m[0mnamespace[0m[0m = "aws:ec2:vpc"
+          [32m+[0m [0m[1m[0mvalue[0m[0m     = (known after apply)
+        }
+      [32m+[0m [0msetting {
+          [32m+[0m [0m[1m[0mname[0m[0m      = "SystemType"
+          [32m+[0m [0m[1m[0mnamespace[0m[0m = "aws:elasticbeanstalk:healthreporting:system"
+          [32m+[0m [0m[1m[0mvalue[0m[0m     = "enhanced"
+        }
+      [32m+[0m [0msetting {
+          [32m+[0m [0m[1m[0mname[0m[0m      = "Timeout"
+          [32m+[0m [0m[1m[0mnamespace[0m[0m = "aws:elasticbeanstalk:command"
+          [32m+[0m [0m[1m[0mvalue[0m[0m     = "600"
+        }
+      [32m+[0m [0msetting {
+          [32m+[0m [0m[1m[0mname[0m[0m      = "Unit"
+          [32m+[0m [0m[1m[0mnamespace[0m[0m = "aws:autoscaling:trigger"
+          [32m+[0m [0m[1m[0mvalue[0m[0m     = "Percent"
+        }
+      [32m+[0m [0msetting {
+          [32m+[0m [0m[1m[0mname[0m[0m      = "UpdateLevel"
+          [32m+[0m [0m[1m[0mnamespace[0m[0m = "aws:elasticbeanstalk:managedactions:platformupdate"
+          [32m+[0m [0m[1m[0mvalue[0m[0m     = "minor"
+        }
+      [32m+[0m [0msetting {
+          [32m+[0m [0m[1m[0mname[0m[0m      = "UpperBreachScaleIncrement"
+          [32m+[0m [0m[1m[0mnamespace[0m[0m = "aws:autoscaling:trigger"
+          [32m+[0m [0m[1m[0mvalue[0m[0m     = "1"
+        }
+      [32m+[0m [0msetting {
+          [32m+[0m [0m[1m[0mname[0m[0m      = "UpperThreshold"
+          [32m+[0m [0m[1m[0mnamespace[0m[0m = "aws:autoscaling:trigger"
+          [32m+[0m [0m[1m[0mvalue[0m[0m     = "80"
+        }
+      [32m+[0m [0msetting {
+          [32m+[0m [0m[1m[0mname[0m[0m      = "VPCId"
+          [32m+[0m [0m[1m[0mnamespace[0m[0m = "aws:ec2:vpc"
+          [32m+[0m [0m[1m[0mvalue[0m[0m     = (known after apply)
+        }
+    }
+
+[1m  # module.elastic_beanstalk_environment.aws_iam_instance_profile.ec2[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_iam_instance_profile" "ec2" {
+      [32m+[0m [0m[1m[0marn[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mcreate_date[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m        = "eg-test-elastic-beanstalk-env-eb-ec2"
+      [32m+[0m [0m[1m[0mpath[0m[0m        = "/"
+      [32m+[0m [0m[1m[0mrole[0m[0m        = "eg-test-elastic-beanstalk-env-eb-ec2"
+      [32m+[0m [0m[1m[0mroles[0m[0m       = (known after apply)
+      [32m+[0m [0m[1m[0munique_id[0m[0m   = (known after apply)
+    }
+
+[1m  # module.elastic_beanstalk_environment.aws_iam_role.ec2[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_iam_role" "ec2" {
+      [32m+[0m [0m[1m[0marn[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0massume_role_policy[0m[0m    = jsonencode(
+            {
+              [32m+[0m [0mStatement = [
+                  [32m+[0m [0m{
+                      [32m+[0m [0mAction    = "sts:AssumeRole"
+                      [32m+[0m [0mEffect    = "Allow"
+                      [32m+[0m [0mPrincipal = {
+                          [32m+[0m [0mService = "ec2.amazonaws.com"
+                        }
+                      [32m+[0m [0mSid       = ""
+                    },
+                  [32m+[0m [0m{
+                      [32m+[0m [0mAction    = "sts:AssumeRole"
+                      [32m+[0m [0mEffect    = "Allow"
+                      [32m+[0m [0mPrincipal = {
+                          [32m+[0m [0mService = "ssm.amazonaws.com"
+                        }
+                      [32m+[0m [0mSid       = ""
+                    },
+                ]
+              [32m+[0m [0mVersion   = "2012-10-17"
+            }
+        )
+      [32m+[0m [0m[1m[0mcreate_date[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mforce_detach_policies[0m[0m = false
+      [32m+[0m [0m[1m[0mid[0m[0m                    = (known after apply)
+      [32m+[0m [0m[1m[0mmax_session_duration[0m[0m  = 3600
+      [32m+[0m [0m[1m[0mname[0m[0m                  = "eg-test-elastic-beanstalk-env-eb-ec2"
+      [32m+[0m [0m[1m[0mpath[0m[0m                  = "/"
+      [32m+[0m [0m[1m[0munique_id[0m[0m             = (known after apply)
+    }
+
+[1m  # module.elastic_beanstalk_environment.aws_iam_role.service[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_iam_role" "service" {
+      [32m+[0m [0m[1m[0marn[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0massume_role_policy[0m[0m    = jsonencode(
+            {
+              [32m+[0m [0mStatement = [
+                  [32m+[0m [0m{
+                      [32m+[0m [0mAction    = "sts:AssumeRole"
+                      [32m+[0m [0mEffect    = "Allow"
+                      [32m+[0m [0mPrincipal = {
+                          [32m+[0m [0mService = "elasticbeanstalk.amazonaws.com"
+                        }
+                      [32m+[0m [0mSid       = ""
+                    },
+                ]
+              [32m+[0m [0mVersion   = "2012-10-17"
+            }
+        )
+      [32m+[0m [0m[1m[0mcreate_date[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mforce_detach_policies[0m[0m = false
+      [32m+[0m [0m[1m[0mid[0m[0m                    = (known after apply)
+      [32m+[0m [0m[1m[0mmax_session_duration[0m[0m  = 3600
+      [32m+[0m [0m[1m[0mname[0m[0m                  = "eg-test-elastic-beanstalk-env-eb-service"
+      [32m+[0m [0m[1m[0mpath[0m[0m                  = "/"
+      [32m+[0m [0m[1m[0munique_id[0m[0m             = (known after apply)
+    }
+
+[1m  # module.elastic_beanstalk_environment.aws_iam_role_policy.default[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_iam_role_policy" "default" {
+      [32m+[0m [0m[1m[0mid[0m[0m     = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m   = "eg-test-elastic-beanstalk-env-eb-default"
+      [32m+[0m [0m[1m[0mpolicy[0m[0m = jsonencode(
+            {
+              [32m+[0m [0mStatement = [
+                  [32m+[0m [0m{
+                      [32m+[0m [0mAction   = [
+                          [32m+[0m [0m"sqs:GetQueueUrl",
+                          [32m+[0m [0m"sqs:GetQueueAttributes",
+                          [32m+[0m [0m"elasticloadbalancing:DescribeTargetHealth",
+                          [32m+[0m [0m"elasticloadbalancing:DescribeLoadBalancers",
+                          [32m+[0m [0m"elasticloadbalancing:DescribeInstanceHealth",
+                          [32m+[0m [0m"ec2:GetConsoleOutput",
+                          [32m+[0m [0m"ec2:DescribeSecurityGroups",
+                          [32m+[0m [0m"ec2:DescribeInstances",
+                          [32m+[0m [0m"ec2:DescribeInstanceStatus",
+                          [32m+[0m [0m"ec2:DescribeAddresses",
+                          [32m+[0m [0m"ec2:AssociateAddress",
+                          [32m+[0m [0m"autoscaling:DescribeScalingActivities",
+                          [32m+[0m [0m"autoscaling:DescribeNotificationConfigurations",
+                          [32m+[0m [0m"autoscaling:DescribeAutoScalingInstances",
+                          [32m+[0m [0m"autoscaling:DescribeAutoScalingGroups",
+                        ]
+                      [32m+[0m [0mEffect   = "Allow"
+                      [32m+[0m [0mResource = "*"
+                      [32m+[0m [0mSid      = ""
+                    },
+                  [32m+[0m [0m{
+                      [32m+[0m [0mAction   = [
+                          [32m+[0m [0m"sqs:GetQueueUrl",
+                          [32m+[0m [0m"sqs:GetQueueAttributes",
+                          [32m+[0m [0m"sns:Subscribe",
+                          [32m+[0m [0m"sns:ListSubscriptionsByTopic",
+                          [32m+[0m [0m"sns:GetTopicAttributes",
+                          [32m+[0m [0m"sns:CreateTopic",
+                          [32m+[0m [0m"s3:ListBucket",
+                          [32m+[0m [0m"s3:GetObjectAcl",
+                          [32m+[0m [0m"s3:GetObject",
+                          [32m+[0m [0m"rds:DescribeOrderableDBInstanceOptions",
+                          [32m+[0m [0m"rds:DescribeDBInstances",
+                          [32m+[0m [0m"rds:DescribeDBEngineVersions",
+                          [32m+[0m [0m"logs:PutRetentionPolicy",
+                          [32m+[0m [0m"logs:CreateLogGroup",
+                          [32m+[0m [0m"iam:PassRole",
+                          [32m+[0m [0m"iam:ListRoles",
+                          [32m+[0m [0m"elasticloadbalancing:RegisterTargets",
+                          [32m+[0m [0m"elasticloadbalancing:RegisterInstancesWithLoadBalancer",
+                          [32m+[0m [0m"elasticloadbalancing:DescribeTargetHealth",
+                          [32m+[0m [0m"elasticloadbalancing:DescribeTargetGroups",
+                          [32m+[0m [0m"elasticloadbalancing:DescribeLoadBalancers",
+                          [32m+[0m [0m"elasticloadbalancing:DescribeInstanceHealth",
+                          [32m+[0m [0m"elasticloadbalancing:DeregisterTargets",
+                          [32m+[0m [0m"elasticloadbalancing:DeregisterInstancesFromLoadBalancer",
+                          [32m+[0m [0m"elasticloadbalancing:DeleteLoadBalancer",
+                          [32m+[0m [0m"elasticloadbalancing:CreateLoadBalancer",
+                          [32m+[0m [0m"elasticloadbalancing:ConfigureHealthCheck",
+                          [32m+[0m [0m"elasticloadbalancing:ApplySecurityGroupsToLoadBalancer",
+                          [32m+[0m [0m"elasticbeanstalk:*",
+                          [32m+[0m [0m"ecs:RegisterTaskDefinition",
+                          [32m+[0m [0m"ecs:DescribeClusters",
+                          [32m+[0m [0m"ecs:DeleteCluster",
+                          [32m+[0m [0m"ecs:CreateCluster",
+                          [32m+[0m [0m"ec2:TerminateInstances",
+                          [32m+[0m [0m"ec2:RevokeSecurityGroupIngress",
+                          [32m+[0m [0m"ec2:RevokeSecurityGroupEgress",
+                          [32m+[0m [0m"ec2:ReleaseAddress",
+                          [32m+[0m [0m"ec2:DisassociateAddress",
+                          [32m+[0m [0m"ec2:DescribeVpcs",
+                          [32m+[0m [0m"ec2:DescribeSubnets",
+                          [32m+[0m [0m"ec2:DescribeSnapshots",
+                          [32m+[0m [0m"ec2:DescribeSecurityGroups",
+                          [32m+[0m [0m"ec2:DescribeKeyPairs",
+                          [32m+[0m [0m"ec2:DescribeInstances",
+                          [32m+[0m [0m"ec2:DescribeImages",
+                          [32m+[0m [0m"ec2:DescribeAddresses",
+                          [32m+[0m [0m"ec2:DescribeAccountAttributes",
+                          [32m+[0m [0m"ec2:DeleteSecurityGroup",
+                          [32m+[0m [0m"ec2:CreateSecurityGroup",
+                          [32m+[0m [0m"ec2:AuthorizeSecurityGroupIngress",
+                          [32m+[0m [0m"ec2:AuthorizeSecurityGroupEgress",
+                          [32m+[0m [0m"ec2:AssociateAddress",
+                          [32m+[0m [0m"ec2:AllocateAddress",
+                          [32m+[0m [0m"codebuild:StartBuild",
+                          [32m+[0m [0m"codebuild:DeleteProject",
+                          [32m+[0m [0m"codebuild:CreateProject",
+                          [32m+[0m [0m"codebuild:BatchGetBuilds",
+                          [32m+[0m [0m"cloudwatch:PutMetricAlarm",
+                          [32m+[0m [0m"autoscaling:UpdateAutoScalingGroup",
+                          [32m+[0m [0m"autoscaling:TerminateInstanceInAutoScalingGroup",
+                          [32m+[0m [0m"autoscaling:SuspendProcesses",
+                          [32m+[0m [0m"autoscaling:SetDesiredCapacity",
+                          [32m+[0m [0m"autoscaling:ResumeProcesses",
+                          [32m+[0m [0m"autoscaling:PutScheduledUpdateGroupAction",
+                          [32m+[0m [0m"autoscaling:DetachInstances",
+                          [32m+[0m [0m"autoscaling:DescribeScheduledActions",
+                          [32m+[0m [0m"autoscaling:DescribeScalingActivities",
+                          [32m+[0m [0m"autoscaling:DescribeNotificationConfigurations",
+                          [32m+[0m [0m"autoscaling:DescribeLoadBalancers",
+                          [32m+[0m [0m"autoscaling:DescribeLaunchConfigurations",
+                          [32m+[0m [0m"autoscaling:DescribeAutoScalingInstances",
+                          [32m+[0m [0m"autoscaling:DescribeAutoScalingGroups",
+                          [32m+[0m [0m"autoscaling:DescribeAccountLimits",
+                          [32m+[0m [0m"autoscaling:DeleteScheduledAction",
+                          [32m+[0m [0m"autoscaling:DeleteLaunchConfiguration",
+                          [32m+[0m [0m"autoscaling:DeleteAutoScalingGroup",
+                          [32m+[0m [0m"autoscaling:CreateLaunchConfiguration",
+                          [32m+[0m [0m"autoscaling:CreateAutoScalingGroup",
+                          [32m+[0m [0m"autoscaling:AttachInstances",
+                        ]
+                      [32m+[0m [0mEffect   = "Allow"
+                      [32m+[0m [0mResource = "*"
+                      [32m+[0m [0mSid      = "AllowOperations"
+                    },
+                  [32m+[0m [0m{
+                      [32m+[0m [0mAction   = "s3:*"
+                      [32m+[0m [0mEffect   = "Allow"
+                      [32m+[0m [0mResource = "arn:aws:s3:::*"
+                      [32m+[0m [0mSid      = "AllowS3OperationsOnElasticBeanstalkBuckets"
+                    },
+                  [32m+[0m [0m{
+                      [32m+[0m [0mAction   = "logs:DeleteLogGroup"
+                      [32m+[0m [0mEffect   = "Allow"
+                      [32m+[0m [0mResource = "arn:aws:logs:*:*:log-group:/aws/elasticbeanstalk*"
+                      [32m+[0m [0mSid      = "AllowDeleteCloudwatchLogGroups"
+                    },
+                  [32m+[0m [0m{
+                      [32m+[0m [0mAction   = "cloudformation:*"
+                      [32m+[0m [0mEffect   = "Allow"
+                      [32m+[0m [0mResource = [
+                          [32m+[0m [0m"arn:aws:cloudformation:*:*:stack/eb-*",
+                          [32m+[0m [0m"arn:aws:cloudformation:*:*:stack/awseb-*",
+                        ]
+                      [32m+[0m [0mSid      = "AllowCloudformationOperationsOnElasticBeanstalkStacks"
+                    },
+                ]
+              [32m+[0m [0mVersion   = "2012-10-17"
+            }
+        )
+      [32m+[0m [0m[1m[0mrole[0m[0m   = (known after apply)
+    }
+
+[1m  # module.elastic_beanstalk_environment.aws_iam_role_policy_attachment.ecr_readonly[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_iam_role_policy_attachment" "ecr_readonly" {
+      [32m+[0m [0m[1m[0mid[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mpolicy_arn[0m[0m = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
+      [32m+[0m [0m[1m[0mrole[0m[0m       = "eg-test-elastic-beanstalk-env-eb-ec2"
+    }
+
+[1m  # module.elastic_beanstalk_environment.aws_iam_role_policy_attachment.elastic_beanstalk_multi_container_docker[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_iam_role_policy_attachment" "elastic_beanstalk_multi_container_docker" {
+      [32m+[0m [0m[1m[0mid[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mpolicy_arn[0m[0m = "arn:aws:iam::aws:policy/AWSElasticBeanstalkMulticontainerDocker"
+      [32m+[0m [0m[1m[0mrole[0m[0m       = "eg-test-elastic-beanstalk-env-eb-ec2"
+    }
+
+[1m  # module.elastic_beanstalk_environment.aws_iam_role_policy_attachment.enhanced_health[0][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_iam_role_policy_attachment" "enhanced_health" {
+      [32m+[0m [0m[1m[0mid[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mpolicy_arn[0m[0m = "arn:aws:iam::aws:policy/service-role/AWSElasticBeanstalkEnhancedHealth"
+      [32m+[0m [0m[1m[0mrole[0m[0m       = "eg-test-elastic-beanstalk-env-eb-service"
+    }
+
+[1m  # module.elastic_beanstalk_environment.aws_iam_role_policy_attachment.service[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_iam_role_policy_attachment" "service" {
+      [32m+[0m [0m[1m[0mid[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mpolicy_arn[0m[0m = "arn:aws:iam::aws:policy/service-role/AWSElasticBeanstalkService"
+      [32m+[0m [0m[1m[0mrole[0m[0m       = "eg-test-elastic-beanstalk-env-eb-service"
+    }
+
+[1m  # module.elastic_beanstalk_environment.aws_iam_role_policy_attachment.ssm_automation[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_iam_role_policy_attachment" "ssm_automation" {
+      [32m+[0m [0m[1m[0mid[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mpolicy_arn[0m[0m = "arn:aws:iam::aws:policy/service-role/AmazonSSMAutomationRole"
+      [32m+[0m [0m[1m[0mrole[0m[0m       = "eg-test-elastic-beanstalk-env-eb-ec2"
+    }
+
+[1m  # module.elastic_beanstalk_environment.aws_iam_role_policy_attachment.ssm_ec2[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_iam_role_policy_attachment" "ssm_ec2" {
+      [32m+[0m [0m[1m[0mid[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mpolicy_arn[0m[0m = "arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforSSM"
+      [32m+[0m [0m[1m[0mrole[0m[0m       = "eg-test-elastic-beanstalk-env-eb-ec2"
+    }
+
+[1m  # module.elastic_beanstalk_environment.aws_iam_role_policy_attachment.web_tier[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_iam_role_policy_attachment" "web_tier" {
+      [32m+[0m [0m[1m[0mid[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mpolicy_arn[0m[0m = "arn:aws:iam::aws:policy/AWSElasticBeanstalkWebTier"
+      [32m+[0m [0m[1m[0mrole[0m[0m       = "eg-test-elastic-beanstalk-env-eb-ec2"
+    }
+
+[1m  # module.elastic_beanstalk_environment.aws_iam_role_policy_attachment.worker_tier[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_iam_role_policy_attachment" "worker_tier" {
+      [32m+[0m [0m[1m[0mid[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mpolicy_arn[0m[0m = "arn:aws:iam::aws:policy/AWSElasticBeanstalkWorkerTier"
+      [32m+[0m [0m[1m[0mrole[0m[0m       = "eg-test-elastic-beanstalk-env-eb-ec2"
+    }
+
+[1m  # module.elastic_beanstalk_environment.aws_s3_bucket.elb_logs[0][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_s3_bucket" "elb_logs" {
+      [32m+[0m [0m[1m[0macceleration_status[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0macl[0m[0m                         = "private"
+      [32m+[0m [0m[1m[0marn[0m[0m                         = (known after apply)
+      [32m+[0m [0m[1m[0mbucket[0m[0m                      = "eg-test-elastic-beanstalk-env-eb-loadbalancer-logs"
+      [32m+[0m [0m[1m[0mbucket_domain_name[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0mbucket_regional_domain_name[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mforce_destroy[0m[0m               = true
+      [32m+[0m [0m[1m[0mhosted_zone_id[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m                          = (known after apply)
+      [32m+[0m [0m[1m[0mpolicy[0m[0m                      = jsonencode(
+            {
+              [32m+[0m [0mStatement = [
+                  [32m+[0m [0m{
+                      [32m+[0m [0mAction    = "s3:PutObject"
+                      [32m+[0m [0mEffect    = "Allow"
+                      [32m+[0m [0mPrincipal = {
+                          [32m+[0m [0mAWS = "arn:aws:iam::114774131450:root"
+                        }
+                      [32m+[0m [0mResource  = "arn:aws:s3:::eg-test-elastic-beanstalk-env-eb-loadbalancer-logs/*"
+                      [32m+[0m [0mSid       = ""
+                    },
+                ]
+              [32m+[0m [0mVersion   = "2012-10-17"
+            }
+        )
+      [32m+[0m [0m[1m[0mregion[0m[0m                      = (known after apply)
+      [32m+[0m [0m[1m[0mrequest_payer[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mwebsite_domain[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0mwebsite_endpoint[0m[0m            = (known after apply)
+
+      [32m+[0m [0mversioning {
+          [32m+[0m [0m[1m[0menabled[0m[0m    = (known after apply)
+          [32m+[0m [0m[1m[0mmfa_delete[0m[0m = (known after apply)
+        }
+    }
+
+[1m  # module.elastic_beanstalk_environment.aws_security_group.default[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_security_group" "default" {
+      [32m+[0m [0m[1m[0marn[0m[0m                    = (known after apply)
+      [32m+[0m [0m[1m[0mdescription[0m[0m            = "Allow inbound traffic from provided Security Groups"
+      [32m+[0m [0m[1m[0megress[0m[0m                 = [
+          [32m+[0m [0m{
+              [32m+[0m [0mcidr_blocks      = [
+                  [32m+[0m [0m"0.0.0.0/0",
+                ]
+              [32m+[0m [0mdescription      = ""
+              [32m+[0m [0mfrom_port        = 0
+              [32m+[0m [0mipv6_cidr_blocks = []
+              [32m+[0m [0mprefix_list_ids  = []
+              [32m+[0m [0mprotocol         = "-1"
+              [32m+[0m [0msecurity_groups  = []
+              [32m+[0m [0mself             = false
+              [32m+[0m [0mto_port          = 0
+            },
+        ]
+      [32m+[0m [0m[1m[0mid[0m[0m                     = (known after apply)
+      [32m+[0m [0m[1m[0mingress[0m[0m                = [
+          [32m+[0m [0m{
+              [32m+[0m [0mcidr_blocks      = []
+              [32m+[0m [0mdescription      = ""
+              [32m+[0m [0mfrom_port        = 0
+              [32m+[0m [0mipv6_cidr_blocks = []
+              [32m+[0m [0mprefix_list_ids  = []
+              [32m+[0m [0mprotocol         = "-1"
+              [32m+[0m [0msecurity_groups  = (known after apply)
+              [32m+[0m [0mself             = false
+              [32m+[0m [0mto_port          = 0
+            },
+        ]
+      [32m+[0m [0m[1m[0mname[0m[0m                   = "eg-test-elastic-beanstalk-env"
+      [32m+[0m [0m[1m[0mowner_id[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mrevoke_rules_on_delete[0m[0m = false
+      [32m+[0m [0m[1m[0mtags[0m[0m                   = {
+          [32m+[0m [0m"Name"      = "eg-test-elastic-beanstalk-env"
+          [32m+[0m [0m"Namespace" = "eg"
+          [32m+[0m [0m"Stage"     = "test"
+        }
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m                 = (known after apply)
+    }
+
+[1m  # module.elastic_beanstalk_environment.aws_ssm_activation.ec2[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_ssm_activation" "ec2" {
+      [32m+[0m [0m[1m[0mactivation_code[0m[0m    = (known after apply)
+      [32m+[0m [0m[1m[0mexpiration_date[0m[0m    = (known after apply)
+      [32m+[0m [0m[1m[0mexpired[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0miam_role[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m               = "eg-test-elastic-beanstalk-env"
+      [32m+[0m [0m[1m[0mregistration_count[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mregistration_limit[0m[0m = 2
+    }
+
+[1m  # module.subnets.data.aws_availability_zones.available[0][0m will be read during apply
+  # (config refers to values not yet known)[0m[0m
+[0m [36m<=[0m[0m data "aws_availability_zones" "available"  {
+        [1m[0mgroup_names[0m[0m = [
+            "ap-southeast-1",
+        ]
+      [33m~[0m [0m[1m[0mid[0m[0m          = "2020-10-18 13:35:36.009047 +0000 UTC" [33m->[0m [0m"2020-10-18 13:35:40.708563 +0000 UTC"
+        [1m[0mnames[0m[0m       = [
+            "ap-southeast-1a",
+            "ap-southeast-1b",
+            "ap-southeast-1c",
+        ]
+        [1m[0mzone_ids[0m[0m    = [
+            "apse1-az2",
+            "apse1-az1",
+            "apse1-az3",
+        ]
+    }
+
+[1m  # module.subnets.data.aws_vpc.default[0][0m will be read during apply
+  # (config refers to values not yet known)[0m[0m
+[0m [36m<=[0m[0m data "aws_vpc" "default"  {
+      [32m+[0m [0m[1m[0marn[0m[0m                     = (known after apply)
+      [32m+[0m [0m[1m[0mcidr_block[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0mcidr_block_associations[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mdefault[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mdhcp_options_id[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0menable_dns_hostnames[0m[0m    = (known after apply)
+      [32m+[0m [0m[1m[0menable_dns_support[0m[0m      = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m                      = (known after apply)
+      [32m+[0m [0m[1m[0minstance_tenancy[0m[0m        = (known after apply)
+      [32m+[0m [0m[1m[0mipv6_association_id[0m[0m     = (known after apply)
+      [32m+[0m [0m[1m[0mipv6_cidr_block[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mmain_route_table_id[0m[0m     = (known after apply)
+      [32m+[0m [0m[1m[0mowner_id[0m[0m                = (known after apply)
+      [32m+[0m [0m[1m[0mstate[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0mtags[0m[0m                    = (known after apply)
+    }
+
+[1m  # module.subnets.aws_eip.default[0][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_eip" "default" {
+      [32m+[0m [0m[1m[0mallocation_id[0m[0m     = (known after apply)
+      [32m+[0m [0m[1m[0massociation_id[0m[0m    = (known after apply)
+      [32m+[0m [0m[1m[0mcustomer_owned_ip[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mdomain[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m                = (known after apply)
+      [32m+[0m [0m[1m[0minstance[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0mnetwork_interface[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mprivate_dns[0m[0m       = (known after apply)
+      [32m+[0m [0m[1m[0mprivate_ip[0m[0m        = (known after apply)
+      [32m+[0m [0m[1m[0mpublic_dns[0m[0m        = (known after apply)
+      [32m+[0m [0m[1m[0mpublic_ip[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mpublic_ipv4_pool[0m[0m  = (known after apply)
+      [32m+[0m [0m[1m[0mtags[0m[0m              = {
+          [32m+[0m [0m"Attributes"          = "private"
+          [32m+[0m [0m"Name"                = "eg-test-elastic-beanstalk-env-private-ap-southeast-1a"
+          [32m+[0m [0m"Namespace"           = "eg"
+          [32m+[0m [0m"Stage"               = "test"
+          [32m+[0m [0m"cpco.io/subnet/type" = "private"
+        }
+      [32m+[0m [0m[1m[0mvpc[0m[0m               = true
+    }
+
+[1m  # module.subnets.aws_eip.default[1][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_eip" "default" {
+      [32m+[0m [0m[1m[0mallocation_id[0m[0m     = (known after apply)
+      [32m+[0m [0m[1m[0massociation_id[0m[0m    = (known after apply)
+      [32m+[0m [0m[1m[0mcustomer_owned_ip[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mdomain[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m                = (known after apply)
+      [32m+[0m [0m[1m[0minstance[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0mnetwork_interface[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mprivate_dns[0m[0m       = (known after apply)
+      [32m+[0m [0m[1m[0mprivate_ip[0m[0m        = (known after apply)
+      [32m+[0m [0m[1m[0mpublic_dns[0m[0m        = (known after apply)
+      [32m+[0m [0m[1m[0mpublic_ip[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mpublic_ipv4_pool[0m[0m  = (known after apply)
+      [32m+[0m [0m[1m[0mtags[0m[0m              = {
+          [32m+[0m [0m"Attributes"          = "private"
+          [32m+[0m [0m"Name"                = "eg-test-elastic-beanstalk-env-private-ap-southeast-1b"
+          [32m+[0m [0m"Namespace"           = "eg"
+          [32m+[0m [0m"Stage"               = "test"
+          [32m+[0m [0m"cpco.io/subnet/type" = "private"
+        }
+      [32m+[0m [0m[1m[0mvpc[0m[0m               = true
+    }
+
+[1m  # module.subnets.aws_nat_gateway.default[0][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_nat_gateway" "default" {
+      [32m+[0m [0m[1m[0mallocation_id[0m[0m        = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0mnetwork_interface_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mprivate_ip[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mpublic_ip[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0msubnet_id[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0mtags[0m[0m                 = {
+          [32m+[0m [0m"Attributes" = "nat"
+          [32m+[0m [0m"Name"       = "eg-test-elastic-beanstalk-env-nat-ap-southeast-1a"
+          [32m+[0m [0m"Namespace"  = "eg"
+          [32m+[0m [0m"Stage"      = "test"
+        }
+    }
+
+[1m  # module.subnets.aws_nat_gateway.default[1][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_nat_gateway" "default" {
+      [32m+[0m [0m[1m[0mallocation_id[0m[0m        = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0mnetwork_interface_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mprivate_ip[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mpublic_ip[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0msubnet_id[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0mtags[0m[0m                 = {
+          [32m+[0m [0m"Attributes" = "nat"
+          [32m+[0m [0m"Name"       = "eg-test-elastic-beanstalk-env-nat-ap-southeast-1b"
+          [32m+[0m [0m"Namespace"  = "eg"
+          [32m+[0m [0m"Stage"      = "test"
+        }
+    }
+
+[1m  # module.subnets.aws_network_acl.private[0][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_network_acl" "private" {
+      [32m+[0m [0m[1m[0marn[0m[0m        = (known after apply)
+      [32m+[0m [0m[1m[0megress[0m[0m     = [
+          [32m+[0m [0m{
+              [32m+[0m [0maction          = "allow"
+              [32m+[0m [0mcidr_block      = "0.0.0.0/0"
+              [32m+[0m [0mfrom_port       = 0
+              [32m+[0m [0micmp_code       = [90mnull[0m[0m
+              [32m+[0m [0micmp_type       = [90mnull[0m[0m
+              [32m+[0m [0mipv6_cidr_block = ""
+              [32m+[0m [0mprotocol        = "-1"
+              [32m+[0m [0mrule_no         = 100
+              [32m+[0m [0mto_port         = 0
+            },
+        ]
+      [32m+[0m [0m[1m[0mid[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mingress[0m[0m    = [
+          [32m+[0m [0m{
+              [32m+[0m [0maction          = "allow"
+              [32m+[0m [0mcidr_block      = "0.0.0.0/0"
+              [32m+[0m [0mfrom_port       = 0
+              [32m+[0m [0micmp_code       = [90mnull[0m[0m
+              [32m+[0m [0micmp_type       = [90mnull[0m[0m
+              [32m+[0m [0mipv6_cidr_block = ""
+              [32m+[0m [0mprotocol        = "-1"
+              [32m+[0m [0mrule_no         = 100
+              [32m+[0m [0mto_port         = 0
+            },
+        ]
+      [32m+[0m [0m[1m[0mowner_id[0m[0m   = (known after apply)
+      [32m+[0m [0m[1m[0msubnet_ids[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mtags[0m[0m       = {
+          [32m+[0m [0m"Attributes"          = "private"
+          [32m+[0m [0m"Name"                = "eg-test-elastic-beanstalk-env"
+          [32m+[0m [0m"Namespace"           = "eg"
+          [32m+[0m [0m"Stage"               = "test"
+          [32m+[0m [0m"cpco.io/subnet/type" = "private"
+        }
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m     = (known after apply)
+    }
+
+[1m  # module.subnets.aws_network_acl.public[0][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_network_acl" "public" {
+      [32m+[0m [0m[1m[0marn[0m[0m        = (known after apply)
+      [32m+[0m [0m[1m[0megress[0m[0m     = [
+          [32m+[0m [0m{
+              [32m+[0m [0maction          = "allow"
+              [32m+[0m [0mcidr_block      = "0.0.0.0/0"
+              [32m+[0m [0mfrom_port       = 0
+              [32m+[0m [0micmp_code       = [90mnull[0m[0m
+              [32m+[0m [0micmp_type       = [90mnull[0m[0m
+              [32m+[0m [0mipv6_cidr_block = ""
+              [32m+[0m [0mprotocol        = "-1"
+              [32m+[0m [0mrule_no         = 100
+              [32m+[0m [0mto_port         = 0
+            },
+        ]
+      [32m+[0m [0m[1m[0mid[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mingress[0m[0m    = [
+          [32m+[0m [0m{
+              [32m+[0m [0maction          = "allow"
+              [32m+[0m [0mcidr_block      = "0.0.0.0/0"
+              [32m+[0m [0mfrom_port       = 0
+              [32m+[0m [0micmp_code       = [90mnull[0m[0m
+              [32m+[0m [0micmp_type       = [90mnull[0m[0m
+              [32m+[0m [0mipv6_cidr_block = ""
+              [32m+[0m [0mprotocol        = "-1"
+              [32m+[0m [0mrule_no         = 100
+              [32m+[0m [0mto_port         = 0
+            },
+        ]
+      [32m+[0m [0m[1m[0mowner_id[0m[0m   = (known after apply)
+      [32m+[0m [0m[1m[0msubnet_ids[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mtags[0m[0m       = {
+          [32m+[0m [0m"Attributes"          = "public"
+          [32m+[0m [0m"Name"                = "eg-test-elastic-beanstalk-env"
+          [32m+[0m [0m"Namespace"           = "eg"
+          [32m+[0m [0m"Stage"               = "test"
+          [32m+[0m [0m"cpco.io/subnet/type" = "public"
+        }
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m     = (known after apply)
+    }
+
+[1m  # module.subnets.aws_route.default[0][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route" "default" {
+      [32m+[0m [0m[1m[0mdestination_cidr_block[0m[0m     = "0.0.0.0/0"
+      [32m+[0m [0m[1m[0mdestination_prefix_list_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0megress_only_gateway_id[0m[0m     = (known after apply)
+      [32m+[0m [0m[1m[0mgateway_id[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m                         = (known after apply)
+      [32m+[0m [0m[1m[0minstance_id[0m[0m                = (known after apply)
+      [32m+[0m [0m[1m[0minstance_owner_id[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0mnat_gateway_id[0m[0m             = (known after apply)
+      [32m+[0m [0m[1m[0mnetwork_interface_id[0m[0m       = (known after apply)
+      [32m+[0m [0m[1m[0morigin[0m[0m                     = (known after apply)
+      [32m+[0m [0m[1m[0mroute_table_id[0m[0m             = (known after apply)
+      [32m+[0m [0m[1m[0mstate[0m[0m                      = (known after apply)
+    }
+
+[1m  # module.subnets.aws_route.default[1][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route" "default" {
+      [32m+[0m [0m[1m[0mdestination_cidr_block[0m[0m     = "0.0.0.0/0"
+      [32m+[0m [0m[1m[0mdestination_prefix_list_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0megress_only_gateway_id[0m[0m     = (known after apply)
+      [32m+[0m [0m[1m[0mgateway_id[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m                         = (known after apply)
+      [32m+[0m [0m[1m[0minstance_id[0m[0m                = (known after apply)
+      [32m+[0m [0m[1m[0minstance_owner_id[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0mnat_gateway_id[0m[0m             = (known after apply)
+      [32m+[0m [0m[1m[0mnetwork_interface_id[0m[0m       = (known after apply)
+      [32m+[0m [0m[1m[0morigin[0m[0m                     = (known after apply)
+      [32m+[0m [0m[1m[0mroute_table_id[0m[0m             = (known after apply)
+      [32m+[0m [0m[1m[0mstate[0m[0m                      = (known after apply)
+    }
+
+[1m  # module.subnets.aws_route.public[0][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route" "public" {
+      [32m+[0m [0m[1m[0mdestination_cidr_block[0m[0m     = "0.0.0.0/0"
+      [32m+[0m [0m[1m[0mdestination_prefix_list_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0megress_only_gateway_id[0m[0m     = (known after apply)
+      [32m+[0m [0m[1m[0mgateway_id[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m                         = (known after apply)
+      [32m+[0m [0m[1m[0minstance_id[0m[0m                = (known after apply)
+      [32m+[0m [0m[1m[0minstance_owner_id[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0mnat_gateway_id[0m[0m             = (known after apply)
+      [32m+[0m [0m[1m[0mnetwork_interface_id[0m[0m       = (known after apply)
+      [32m+[0m [0m[1m[0morigin[0m[0m                     = (known after apply)
+      [32m+[0m [0m[1m[0mroute_table_id[0m[0m             = (known after apply)
+      [32m+[0m [0m[1m[0mstate[0m[0m                      = (known after apply)
+    }
+
+[1m  # module.subnets.aws_route_table.private[0][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route_table" "private" {
+      [32m+[0m [0m[1m[0mid[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mowner_id[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mpropagating_vgws[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mroute[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0mtags[0m[0m             = {
+          [32m+[0m [0m"Attributes"          = "private"
+          [32m+[0m [0m"Name"                = "eg-test-elastic-beanstalk-env-private-ap-southeast-1a"
+          [32m+[0m [0m"Namespace"           = "eg"
+          [32m+[0m [0m"Stage"               = "test"
+          [32m+[0m [0m"cpco.io/subnet/type" = "private"
+        }
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m           = (known after apply)
+    }
+
+[1m  # module.subnets.aws_route_table.private[1][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route_table" "private" {
+      [32m+[0m [0m[1m[0mid[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mowner_id[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mpropagating_vgws[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mroute[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0mtags[0m[0m             = {
+          [32m+[0m [0m"Attributes"          = "private"
+          [32m+[0m [0m"Name"                = "eg-test-elastic-beanstalk-env-private-ap-southeast-1b"
+          [32m+[0m [0m"Namespace"           = "eg"
+          [32m+[0m [0m"Stage"               = "test"
+          [32m+[0m [0m"cpco.io/subnet/type" = "private"
+        }
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m           = (known after apply)
+    }
+
+[1m  # module.subnets.aws_route_table.public[0][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route_table" "public" {
+      [32m+[0m [0m[1m[0mid[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mowner_id[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mpropagating_vgws[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mroute[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0mtags[0m[0m             = {
+          [32m+[0m [0m"Attributes"          = "public"
+          [32m+[0m [0m"Name"                = "eg-test-elastic-beanstalk-env"
+          [32m+[0m [0m"Namespace"           = "eg"
+          [32m+[0m [0m"Stage"               = "test"
+          [32m+[0m [0m"cpco.io/subnet/type" = "public"
+        }
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m           = (known after apply)
+    }
+
+[1m  # module.subnets.aws_route_table_association.private[0][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route_table_association" "private" {
+      [32m+[0m [0m[1m[0mid[0m[0m             = (known after apply)
+      [32m+[0m [0m[1m[0mroute_table_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0msubnet_id[0m[0m      = (known after apply)
+    }
+
+[1m  # module.subnets.aws_route_table_association.private[1][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route_table_association" "private" {
+      [32m+[0m [0m[1m[0mid[0m[0m             = (known after apply)
+      [32m+[0m [0m[1m[0mroute_table_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0msubnet_id[0m[0m      = (known after apply)
+    }
+
+[1m  # module.subnets.aws_route_table_association.public[0][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route_table_association" "public" {
+      [32m+[0m [0m[1m[0mid[0m[0m             = (known after apply)
+      [32m+[0m [0m[1m[0mroute_table_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0msubnet_id[0m[0m      = (known after apply)
+    }
+
+[1m  # module.subnets.aws_route_table_association.public[1][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route_table_association" "public" {
+      [32m+[0m [0m[1m[0mid[0m[0m             = (known after apply)
+      [32m+[0m [0m[1m[0mroute_table_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0msubnet_id[0m[0m      = (known after apply)
+    }
+
+[1m  # module.subnets.aws_subnet.private[0][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_subnet" "private" {
+      [32m+[0m [0m[1m[0marn[0m[0m                             = (known after apply)
+      [32m+[0m [0m[1m[0massign_ipv6_address_on_creation[0m[0m = false
+      [32m+[0m [0m[1m[0mavailability_zone[0m[0m               = "ap-southeast-1a"
+      [32m+[0m [0m[1m[0mavailability_zone_id[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0mcidr_block[0m[0m                      = "172.16.0.0/19"
+      [32m+[0m [0m[1m[0mid[0m[0m                              = (known after apply)
+      [32m+[0m [0m[1m[0mipv6_cidr_block[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mipv6_cidr_block_association_id[0m[0m  = (known after apply)
+      [32m+[0m [0m[1m[0mmap_public_ip_on_launch[0m[0m         = false
+      [32m+[0m [0m[1m[0mowner_id[0m[0m                        = (known after apply)
+      [32m+[0m [0m[1m[0mtags[0m[0m                            = {
+          [32m+[0m [0m"Attributes"          = "private"
+          [32m+[0m [0m"Name"                = "eg-test-elastic-beanstalk-env-private-ap-southeast-1a"
+          [32m+[0m [0m"Namespace"           = "eg"
+          [32m+[0m [0m"Stage"               = "test"
+          [32m+[0m [0m"cpco.io/subnet/type" = "private"
+        }
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m                          = (known after apply)
+    }
+
+[1m  # module.subnets.aws_subnet.private[1][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_subnet" "private" {
+      [32m+[0m [0m[1m[0marn[0m[0m                             = (known after apply)
+      [32m+[0m [0m[1m[0massign_ipv6_address_on_creation[0m[0m = false
+      [32m+[0m [0m[1m[0mavailability_zone[0m[0m               = "ap-southeast-1b"
+      [32m+[0m [0m[1m[0mavailability_zone_id[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0mcidr_block[0m[0m                      = "172.16.32.0/19"
+      [32m+[0m [0m[1m[0mid[0m[0m                              = (known after apply)
+      [32m+[0m [0m[1m[0mipv6_cidr_block[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mipv6_cidr_block_association_id[0m[0m  = (known after apply)
+      [32m+[0m [0m[1m[0mmap_public_ip_on_launch[0m[0m         = false
+      [32m+[0m [0m[1m[0mowner_id[0m[0m                        = (known after apply)
+      [32m+[0m [0m[1m[0mtags[0m[0m                            = {
+          [32m+[0m [0m"Attributes"          = "private"
+          [32m+[0m [0m"Name"                = "eg-test-elastic-beanstalk-env-private-ap-southeast-1b"
+          [32m+[0m [0m"Namespace"           = "eg"
+          [32m+[0m [0m"Stage"               = "test"
+          [32m+[0m [0m"cpco.io/subnet/type" = "private"
+        }
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m                          = (known after apply)
+    }
+
+[1m  # module.subnets.aws_subnet.public[0][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_subnet" "public" {
+      [32m+[0m [0m[1m[0marn[0m[0m                             = (known after apply)
+      [32m+[0m [0m[1m[0massign_ipv6_address_on_creation[0m[0m = false
+      [32m+[0m [0m[1m[0mavailability_zone[0m[0m               = "ap-southeast-1a"
+      [32m+[0m [0m[1m[0mavailability_zone_id[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0mcidr_block[0m[0m                      = "172.16.96.0/19"
+      [32m+[0m [0m[1m[0mid[0m[0m                              = (known after apply)
+      [32m+[0m [0m[1m[0mipv6_cidr_block[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mipv6_cidr_block_association_id[0m[0m  = (known after apply)
+      [32m+[0m [0m[1m[0mmap_public_ip_on_launch[0m[0m         = true
+      [32m+[0m [0m[1m[0mowner_id[0m[0m                        = (known after apply)
+      [32m+[0m [0m[1m[0mtags[0m[0m                            = {
+          [32m+[0m [0m"Attributes"          = "public"
+          [32m+[0m [0m"Name"                = "eg-test-elastic-beanstalk-env-public-ap-southeast-1a"
+          [32m+[0m [0m"Namespace"           = "eg"
+          [32m+[0m [0m"Stage"               = "test"
+          [32m+[0m [0m"cpco.io/subnet/type" = "public"
+        }
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m                          = (known after apply)
+    }
+
+[1m  # module.subnets.aws_subnet.public[1][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_subnet" "public" {
+      [32m+[0m [0m[1m[0marn[0m[0m                             = (known after apply)
+      [32m+[0m [0m[1m[0massign_ipv6_address_on_creation[0m[0m = false
+      [32m+[0m [0m[1m[0mavailability_zone[0m[0m               = "ap-southeast-1b"
+      [32m+[0m [0m[1m[0mavailability_zone_id[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0mcidr_block[0m[0m                      = "172.16.128.0/19"
+      [32m+[0m [0m[1m[0mid[0m[0m                              = (known after apply)
+      [32m+[0m [0m[1m[0mipv6_cidr_block[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mipv6_cidr_block_association_id[0m[0m  = (known after apply)
+      [32m+[0m [0m[1m[0mmap_public_ip_on_launch[0m[0m         = true
+      [32m+[0m [0m[1m[0mowner_id[0m[0m                        = (known after apply)
+      [32m+[0m [0m[1m[0mtags[0m[0m                            = {
+          [32m+[0m [0m"Attributes"          = "public"
+          [32m+[0m [0m"Name"                = "eg-test-elastic-beanstalk-env-public-ap-southeast-1b"
+          [32m+[0m [0m"Namespace"           = "eg"
+          [32m+[0m [0m"Stage"               = "test"
+          [32m+[0m [0m"cpco.io/subnet/type" = "public"
+        }
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m                          = (known after apply)
+    }
+
+[1m  # module.vpc.aws_default_security_group.default[0][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_default_security_group" "default" {
+      [32m+[0m [0m[1m[0marn[0m[0m                    = (known after apply)
+      [32m+[0m [0m[1m[0mdescription[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0megress[0m[0m                 = []
+      [32m+[0m [0m[1m[0mid[0m[0m                     = (known after apply)
+      [32m+[0m [0m[1m[0mingress[0m[0m                = []
+      [32m+[0m [0m[1m[0mname[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0mowner_id[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mrevoke_rules_on_delete[0m[0m = false
+      [32m+[0m [0m[1m[0mtags[0m[0m                   = {
+          [32m+[0m [0m"Name"      = "Default Security Group"
+          [32m+[0m [0m"Namespace" = "eg"
+          [32m+[0m [0m"Stage"     = "test"
+        }
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m                 = (known after apply)
+    }
+
+[1m  # module.vpc.aws_internet_gateway.default[0][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_internet_gateway" "default" {
+      [32m+[0m [0m[1m[0marn[0m[0m      = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m       = (known after apply)
+      [32m+[0m [0m[1m[0mowner_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mtags[0m[0m     = {
+          [32m+[0m [0m"Name"      = "eg-test-elastic-beanstalk-env"
+          [32m+[0m [0m"Namespace" = "eg"
+          [32m+[0m [0m"Stage"     = "test"
+        }
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m   = (known after apply)
+    }
+
+[1m  # module.vpc.aws_vpc.default[0][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_vpc" "default" {
+      [32m+[0m [0m[1m[0marn[0m[0m                              = (known after apply)
+      [32m+[0m [0m[1m[0massign_generated_ipv6_cidr_block[0m[0m = true
+      [32m+[0m [0m[1m[0mcidr_block[0m[0m                       = "172.16.0.0/16"
+      [32m+[0m [0m[1m[0mdefault_network_acl_id[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mdefault_route_table_id[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mdefault_security_group_id[0m[0m        = (known after apply)
+      [32m+[0m [0m[1m[0mdhcp_options_id[0m[0m                  = (known after apply)
+      [32m+[0m [0m[1m[0menable_classiclink[0m[0m               = false
+      [32m+[0m [0m[1m[0menable_classiclink_dns_support[0m[0m   = false
+      [32m+[0m [0m[1m[0menable_dns_hostnames[0m[0m             = true
+      [32m+[0m [0m[1m[0menable_dns_support[0m[0m               = true
+      [32m+[0m [0m[1m[0mid[0m[0m                               = (known after apply)
+      [32m+[0m [0m[1m[0minstance_tenancy[0m[0m                 = "default"
+      [32m+[0m [0m[1m[0mipv6_association_id[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0mipv6_cidr_block[0m[0m                  = (known after apply)
+      [32m+[0m [0m[1m[0mmain_route_table_id[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0mowner_id[0m[0m                         = (known after apply)
+      [32m+[0m [0m[1m[0mtags[0m[0m                             = {
+          [32m+[0m [0m"Name"      = "eg-test-elastic-beanstalk-env"
+          [32m+[0m [0m"Namespace" = "eg"
+          [32m+[0m [0m"Stage"     = "test"
+        }
+    }
+
+[1m  # module.elastic_beanstalk_environment.module.dns_hostname.aws_route53_record.default[0][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route53_record" "default" {
+      [32m+[0m [0m[1m[0mallow_overwrite[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mfqdn[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m            = "elastic-beanstalk-env"
+      [32m+[0m [0m[1m[0mrecords[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mttl[0m[0m             = 300
+      [32m+[0m [0m[1m[0mtype[0m[0m            = "CNAME"
+      [32m+[0m [0m[1m[0mzone_id[0m[0m         = "Z3SO0TKDDQ0RGG"
+    }
+
+[0m[1mPlan:[0m 41 to add, 0 to change, 0 to destroy.[0m
+[0m
+[1mChanges to Outputs:[0m
+  [32m+[0m [0m[1m[0melastic_beanstalk_application_name[0m[0m                           = "eg-test-elastic-beanstalk-env"
+  [32m+[0m [0m[1m[0melastic_beanstalk_environment_all_settings[0m[0m                   = (known after apply)
+  [32m+[0m [0m[1m[0melastic_beanstalk_environment_application[0m[0m                    = "eg-test-elastic-beanstalk-env"
+  [32m+[0m [0m[1m[0melastic_beanstalk_environment_autoscaling_groups[0m[0m             = (known after apply)
+  [32m+[0m [0m[1m[0melastic_beanstalk_environment_ec2_instance_profile_role_name[0m[0m = "eg-test-elastic-beanstalk-env-eb-ec2"
+  [32m+[0m [0m[1m[0melastic_beanstalk_environment_elb_zone_id[0m[0m                    = "Z16FZ9L249IFLT"
+  [32m+[0m [0m[1m[0melastic_beanstalk_environment_endpoint[0m[0m                       = (known after apply)
+  [32m+[0m [0m[1m[0melastic_beanstalk_environment_hostname[0m[0m                       = (known after apply)
+  [32m+[0m [0m[1m[0melastic_beanstalk_environment_id[0m[0m                             = (known after apply)
+  [32m+[0m [0m[1m[0melastic_beanstalk_environment_instances[0m[0m                      = (known after apply)
+  [32m+[0m [0m[1m[0melastic_beanstalk_environment_launch_configurations[0m[0m          = (known after apply)
+  [32m+[0m [0m[1m[0melastic_beanstalk_environment_load_balancers[0m[0m                 = (known after apply)
+  [32m+[0m [0m[1m[0melastic_beanstalk_environment_name[0m[0m                           = "eg-test-elastic-beanstalk-env"
+  [32m+[0m [0m[1m[0melastic_beanstalk_environment_queues[0m[0m                         = (known after apply)
+  [32m+[0m [0m[1m[0melastic_beanstalk_environment_security_group_id[0m[0m              = (known after apply)
+  [32m+[0m [0m[1m[0melastic_beanstalk_environment_setting[0m[0m                        = [
+      [32m+[0m [0m{
+          [32m+[0m [0mname      = "AccessLogsS3Bucket"
+          [32m+[0m [0mnamespace = "aws:elbv2:loadbalancer"
+          [32m+[0m [0mresource  = ""
+          [32m+[0m [0mvalue     = (known after apply)
+        },
+      [32m+[0m [0m{
+          [32m+[0m [0mname      = "AccessLogsS3Enabled"
+          [32m+[0m [0mnamespace = "aws:elbv2:loadbalancer"
+          [32m+[0m [0mresource  = ""
+          [32m+[0m [0mvalue     = "true"
+        },
+      [32m+[0m [0m{
+          [32m+[0m [0mname      = "AssociatePublicIpAddress"
+          [32m+[0m [0mnamespace = "aws:ec2:vpc"
+          [32m+[0m [0mresource  = ""
+          [32m+[0m [0mvalue     = "false"
+        },
+      [32m+[0m [0m{
+          [32m+[0m [0mname      = "Availability Zones"
+          [32m+[0m [0mnamespace = "aws:autoscaling:asg"
+          [32m+[0m [0mresource  = ""
+          [32m+[0m [0mvalue     = "Any 2"
+        },
+      [32m+[0m [0m{
+          [32m+[0m [0mname      = "BASE_HOST"
+          [32m+[0m [0mnamespace = "aws:elasticbeanstalk:application:environment"
+          [32m+[0m [0mresource  = ""
+          [32m+[0m [0mvalue     = "elastic-beanstalk-env"
+        },
+      [32m+[0m [0m{
+          [32m+[0m [0mname      = "BatchSize"
+          [32m+[0m [0mnamespace = "aws:elasticbeanstalk:command"
+          [32m+[0m [0mresource  = ""
+          [32m+[0m [0mvalue     = "1"
+        },
+      [32m+[0m [0m{
+          [32m+[0m [0mname      = "BatchSizeType"
+          [32m+[0m [0mnamespace = "aws:elasticbeanstalk:command"
+          [32m+[0m [0mresource  = ""
+          [32m+[0m [0mvalue     = "Fixed"
+        },
+      [32m+[0m [0m{
+          [32m+[0m [0mname      = "DeleteOnTerminate"
+          [32m+[0m [0mnamespace = "aws:elasticbeanstalk:cloudwatch:logs"
+          [32m+[0m [0mresource  = ""
+          [32m+[0m [0mvalue     = "false"
+        },
+      [32m+[0m [0m{
+          [32m+[0m [0mname      = "DeleteOnTerminate"
+          [32m+[0m [0mnamespace = "aws:elasticbeanstalk:cloudwatch:logs:health"
+          [32m+[0m [0mresource  = ""
+          [32m+[0m [0mvalue     = "false"
+        },
+      [32m+[0m [0m{
+          [32m+[0m [0mname      = "DeploymentPolicy"
+          [32m+[0m [0mnamespace = "aws:elasticbeanstalk:command"
+          [32m+[0m [0mresource  = ""
+          [32m+[0m [0mvalue     = "Rolling"
+        },
+      [32m+[0m [0m{
+          [32m+[0m [0mname      = "EC2KeyName"
+          [32m+[0m [0mnamespace = "aws:autoscaling:launchconfiguration"
+          [32m+[0m [0mresource  = ""
+          [32m+[0m [0mvalue     = ""
+        },
+      [32m+[0m [0m{
+          [32m+[0m [0mname      = "ELBScheme"
+          [32m+[0m [0mnamespace = "aws:ec2:vpc"
+          [32m+[0m [0mresource  = ""
+          [32m+[0m [0mvalue     = "public"
+        },
+      [32m+[0m [0m{
+          [32m+[0m [0mname      = "ELBSubnets"
+          [32m+[0m [0mnamespace = "aws:ec2:vpc"
+          [32m+[0m [0mresource  = ""
+          [32m+[0m [0mvalue     = (known after apply)
+        },
+      [32m+[0m [0m{
+          [32m+[0m [0mname      = "EnableSpot"
+          [32m+[0m [0mnamespace = "aws:ec2:instances"
+          [32m+[0m [0mresource  = ""
+          [32m+[0m [0mvalue     = "false"
+        },
+      [32m+[0m [0m{
+          [32m+[0m [0mname      = "EnvironmentType"
+          [32m+[0m [0mnamespace = "aws:elasticbeanstalk:environment"
+          [32m+[0m [0mresource  = ""
+          [32m+[0m [0mvalue     = "LoadBalanced"
+        },
+      [32m+[0m [0m{
+          [32m+[0m [0mname      = "HealthCheckPath"
+          [32m+[0m [0mnamespace = "aws:elasticbeanstalk:environment:process:default"
+          [32m+[0m [0mresource  = ""
+          [32m+[0m [0mvalue     = "/"
+        },
+      [32m+[0m [0m{
+          [32m+[0m [0mname      = "HealthStreamingEnabled"
+          [32m+[0m [0mnamespace = "aws:elasticbeanstalk:cloudwatch:logs:health"
+          [32m+[0m [0mresource  = ""
+          [32m+[0m [0mvalue     = "false"
+        },
+      [32m+[0m [0m{
+          [32m+[0m [0mname      = "IamInstanceProfile"
+          [32m+[0m [0mnamespace = "aws:autoscaling:launchconfiguration"
+          [32m+[0m [0mresource  = ""
+          [32m+[0m [0mvalue     = "eg-test-elastic-beanstalk-env-eb-ec2"
+        },
+      [32m+[0m [0m{
+          [32m+[0m [0mname      = "IgnoreHealthCheck"
+          [32m+[0m [0mnamespace = "aws:elasticbeanstalk:command"
+          [32m+[0m [0mresource  = ""
+          [32m+[0m [0mvalue     = "false"
+        },
+      [32m+[0m [0m{
+          [32m+[0m [0mname      = "InstanceRefreshEnabled"
+          [32m+[0m [0mnamespace = "aws:elasticbeanstalk:managedactions:platformupdate"
+          [32m+[0m [0mresource  = ""
+          [32m+[0m [0mvalue     = "true"
+        },
+      [32m+[0m [0m{
+          [32m+[0m [0mname      = "InstanceTypes"
+          [32m+[0m [0mnamespace = "aws:ec2:instances"
+          [32m+[0m [0mresource  = ""
+          [32m+[0m [0mvalue     = "t2.micro"
+        },
+      [32m+[0m [0m{
+          [32m+[0m [0mname      = "ListenerEnabled"
+          [32m+[0m [0mnamespace = "aws:elbv2:listener:443"
+          [32m+[0m [0mresource  = ""
+          [32m+[0m [0mvalue     = "false"
+        },
+      [32m+[0m [0m{
+          [32m+[0m [0mname      = "ListenerEnabled"
+          [32m+[0m [0mnamespace = "aws:elbv2:listener:default"
+          [32m+[0m [0mresource  = ""
+          [32m+[0m [0mvalue     = "true"
+        },
+      [32m+[0m [0m{
+          [32m+[0m [0mname      = "LoadBalancerType"
+          [32m+[0m [0mnamespace = "aws:elasticbeanstalk:environment"
+          [32m+[0m [0mresource  = ""
+          [32m+[0m [0mvalue     = "application"
+        },
+      [32m+[0m [0m{
+          [32m+[0m [0mname      = "LogPublicationControl"
+          [32m+[0m [0mnamespace = "aws:elasticbeanstalk:hostmanager"
+          [32m+[0m [0mresource  = ""
+          [32m+[0m [0mvalue     = "false"
+        },
+      [32m+[0m [0m{
+          [32m+[0m [0mname      = "LowerBreachScaleIncrement"
+          [32m+[0m [0mnamespace = "aws:autoscaling:trigger"
+          [32m+[0m [0mresource  = ""
+          [32m+[0m [0mvalue     = "-1"
+        },
+      [32m+[0m [0m{
+          [32m+[0m [0mname      = "LowerThreshold"
+          [32m+[0m [0mnamespace = "aws:autoscaling:trigger"
+          [32m+[0m [0mresource  = ""
+          [32m+[0m [0mvalue     = "20"
+        },
+      [32m+[0m [0m{
+          [32m+[0m [0mname      = "ManagedActionsEnabled"
+          [32m+[0m [0mnamespace = "aws:elasticbeanstalk:managedactions"
+          [32m+[0m [0mresource  = ""
+          [32m+[0m [0mvalue     = "false"
+        },
+      [32m+[0m [0m{
+          [32m+[0m [0mname      = "ManagedActionsEnabled"
+          [32m+[0m [0mnamespace = "aws:elasticbeanstalk:managedactions"
+          [32m+[0m [0mresource  = ""
+          [32m+[0m [0mvalue     = "true"
+        },
+      [32m+[0m [0m{
+          [32m+[0m [0mname      = "ManagedSecurityGroup"
+          [32m+[0m [0mnamespace = "aws:elbv2:loadbalancer"
+          [32m+[0m [0mresource  = ""
+          [32m+[0m [0mvalue     = ""
+        },
+      [32m+[0m [0m{
+          [32m+[0m [0mname      = "MaxBatchSize"
+          [32m+[0m [0mnamespace = "aws:autoscaling:updatepolicy:rollingupdate"
+          [32m+[0m [0mresource  = ""
+          [32m+[0m [0mvalue     = "1"
+        },
+      [32m+[0m [0m{
+          [32m+[0m [0mname      = "MaxSize"
+          [32m+[0m [0mnamespace = "aws:autoscaling:asg"
+          [32m+[0m [0mresource  = ""
+          [32m+[0m [0mvalue     = "2"
+        },
+      [32m+[0m [0m{
+          [32m+[0m [0mname      = "MeasureName"
+          [32m+[0m [0mnamespace = "aws:autoscaling:trigger"
+          [32m+[0m [0mresource  = ""
+          [32m+[0m [0mvalue     = "CPUUtilization"
+        },
+      [32m+[0m [0m{
+          [32m+[0m [0mname      = "MinInstancesInService"
+          [32m+[0m [0mnamespace = "aws:autoscaling:updatepolicy:rollingupdate"
+          [32m+[0m [0mresource  = ""
+          [32m+[0m [0mvalue     = "0"
+        },
+      [32m+[0m [0m{
+          [32m+[0m [0mname      = "MinSize"
+          [32m+[0m [0mnamespace = "aws:autoscaling:asg"
+          [32m+[0m [0mresource  = ""
+          [32m+[0m [0mvalue     = "1"
+        },
+      [32m+[0m [0m{
+          [32m+[0m [0mname      = "Port"
+          [32m+[0m [0mnamespace = "aws:elasticbeanstalk:environment:process:default"
+          [32m+[0m [0mresource  = ""
+          [32m+[0m [0mvalue     = "80"
+        },
+      [32m+[0m [0m{
+          [32m+[0m [0mname      = "PreferredStartTime"
+          [32m+[0m [0mnamespace = "aws:elasticbeanstalk:managedactions"
+          [32m+[0m [0mresource  = ""
+          [32m+[0m [0mvalue     = "Sun:10:00"
+        },
+      [32m+[0m [0m{
+          [32m+[0m [0mname      = "Protocol"
+          [32m+[0m [0mnamespace = "aws:elasticbeanstalk:environment:process:default"
+          [32m+[0m [0mresource  = ""
+          [32m+[0m [0mvalue     = "HTTP"
+        },
+      [32m+[0m [0m{
+          [32m+[0m [0mname      = "Protocol"
+          [32m+[0m [0mnamespace = "aws:elbv2:listener:443"
+          [32m+[0m [0mresource  = ""
+          [32m+[0m [0mvalue     = "HTTPS"
+        },
+      [32m+[0m [0m{
+          [32m+[0m [0mname      = "RetentionInDays"
+          [32m+[0m [0mnamespace = "aws:elasticbeanstalk:cloudwatch:logs"
+          [32m+[0m [0mresource  = ""
+          [32m+[0m [0mvalue     = "7"
+        },
+      [32m+[0m [0m{
+          [32m+[0m [0mname      = "RetentionInDays"
+          [32m+[0m [0mnamespace = "aws:elasticbeanstalk:cloudwatch:logs:health"
+          [32m+[0m [0mresource  = ""
+          [32m+[0m [0mvalue     = "7"
+        },
+      [32m+[0m [0m{
+          [32m+[0m [0mname      = "RollingUpdateEnabled"
+          [32m+[0m [0mnamespace = "aws:autoscaling:updatepolicy:rollingupdate"
+          [32m+[0m [0mresource  = ""
+          [32m+[0m [0mvalue     = "true"
+        },
+      [32m+[0m [0m{
+          [32m+[0m [0mname      = "RollingUpdateType"
+          [32m+[0m [0mnamespace = "aws:autoscaling:updatepolicy:rollingupdate"
+          [32m+[0m [0mresource  = ""
+          [32m+[0m [0mvalue     = "Health"
+        },
+      [32m+[0m [0m{
+          [32m+[0m [0mname      = "RootVolumeSize"
+          [32m+[0m [0mnamespace = "aws:autoscaling:launchconfiguration"
+          [32m+[0m [0mresource  = ""
+          [32m+[0m [0mvalue     = "8"
+        },
+      [32m+[0m [0m{
+          [32m+[0m [0mname      = "RootVolumeType"
+          [32m+[0m [0mnamespace = "aws:autoscaling:launchconfiguration"
+          [32m+[0m [0mresource  = ""
+          [32m+[0m [0mvalue     = "gp2"
+        },
+      [32m+[0m [0m{
+          [32m+[0m [0mname      = "SSLCertificateArns"
+          [32m+[0m [0mnamespace = "aws:elbv2:listener:443"
+          [32m+[0m [0mresource  = ""
+          [32m+[0m [0mvalue     = ""
+        },
+      [32m+[0m [0m{
+          [32m+[0m [0mname      = "SSLPolicy"
+          [32m+[0m [0mnamespace = "aws:elbv2:listener:443"
+          [32m+[0m [0mresource  = ""
+          [32m+[0m [0mvalue     = ""
+        },
+      [32m+[0m [0m{
+          [32m+[0m [0mname      = "SecurityGroups"
+          [32m+[0m [0mnamespace = "aws:autoscaling:launchconfiguration"
+          [32m+[0m [0mresource  = ""
+          [32m+[0m [0mvalue     = (known after apply)
+        },
+      [32m+[0m [0m{
+          [32m+[0m [0mname      = "SecurityGroups"
+          [32m+[0m [0mnamespace = "aws:elbv2:loadbalancer"
+          [32m+[0m [0mresource  = ""
+          [32m+[0m [0mvalue     = ""
+        },
+      [32m+[0m [0m{
+          [32m+[0m [0mname      = "ServiceRole"
+          [32m+[0m [0mnamespace = "aws:elasticbeanstalk:environment"
+          [32m+[0m [0mresource  = ""
+          [32m+[0m [0mvalue     = "eg-test-elastic-beanstalk-env-eb-service"
+        },
+      [32m+[0m [0m{
+          [32m+[0m [0mname      = "SpotFleetOnDemandAboveBasePercentage"
+          [32m+[0m [0mnamespace = "aws:ec2:instances"
+          [32m+[0m [0mresource  = ""
+          [32m+[0m [0mvalue     = "70"
+        },
+      [32m+[0m [0m{
+          [32m+[0m [0mname      = "SpotFleetOnDemandBase"
+          [32m+[0m [0mnamespace = "aws:ec2:instances"
+          [32m+[0m [0mresource  = ""
+          [32m+[0m [0mvalue     = "0"
+        },
+      [32m+[0m [0m{
+          [32m+[0m [0mname      = "SpotMaxPrice"
+          [32m+[0m [0mnamespace = "aws:ec2:instances"
+          [32m+[0m [0mresource  = ""
+          [32m+[0m [0mvalue     = ""
+        },
+      [32m+[0m [0m{
+          [32m+[0m [0mname      = "Statistic"
+          [32m+[0m [0mnamespace = "aws:autoscaling:trigger"
+          [32m+[0m [0mresource  = ""
+          [32m+[0m [0mvalue     = "Average"
+        },
+      [32m+[0m [0m{
+          [32m+[0m [0mname      = "StickinessEnabled"
+          [32m+[0m [0mnamespace = "aws:elasticbeanstalk:environment:process:default"
+          [32m+[0m [0mresource  = ""
+          [32m+[0m [0mvalue     = "false"
+        },
+      [32m+[0m [0m{
+          [32m+[0m [0mname      = "StreamLogs"
+          [32m+[0m [0mnamespace = "aws:elasticbeanstalk:cloudwatch:logs"
+          [32m+[0m [0mresource  = ""
+          [32m+[0m [0mvalue     = "false"
+        },
+      [32m+[0m [0m{
+          [32m+[0m [0mname      = "Subnets"
+          [32m+[0m [0mnamespace = "aws:ec2:vpc"
+          [32m+[0m [0mresource  = ""
+          [32m+[0m [0mvalue     = (known after apply)
+        },
+      [32m+[0m [0m{
+          [32m+[0m [0mname      = "SystemType"
+          [32m+[0m [0mnamespace = "aws:elasticbeanstalk:healthreporting:system"
+          [32m+[0m [0mresource  = ""
+          [32m+[0m [0mvalue     = "enhanced"
+        },
+      [32m+[0m [0m{
+          [32m+[0m [0mname      = "Timeout"
+          [32m+[0m [0mnamespace = "aws:elasticbeanstalk:command"
+          [32m+[0m [0mresource  = ""
+          [32m+[0m [0mvalue     = "600"
+        },
+      [32m+[0m [0m{
+          [32m+[0m [0mname      = "Unit"
+          [32m+[0m [0mnamespace = "aws:autoscaling:trigger"
+          [32m+[0m [0mresource  = ""
+          [32m+[0m [0mvalue     = "Percent"
+        },
+      [32m+[0m [0m{
+          [32m+[0m [0mname      = "UpdateLevel"
+          [32m+[0m [0mnamespace = "aws:elasticbeanstalk:managedactions:platformupdate"
+          [32m+[0m [0mresource  = ""
+          [32m+[0m [0mvalue     = "minor"
+        },
+      [32m+[0m [0m{
+          [32m+[0m [0mname      = "UpperBreachScaleIncrement"
+          [32m+[0m [0mnamespace = "aws:autoscaling:trigger"
+          [32m+[0m [0mresource  = ""
+          [32m+[0m [0mvalue     = "1"
+        },
+      [32m+[0m [0m{
+          [32m+[0m [0mname      = "UpperThreshold"
+          [32m+[0m [0mnamespace = "aws:autoscaling:trigger"
+          [32m+[0m [0mresource  = ""
+          [32m+[0m [0mvalue     = "80"
+        },
+      [32m+[0m [0m{
+          [32m+[0m [0mname      = "VPCId"
+          [32m+[0m [0mnamespace = "aws:ec2:vpc"
+          [32m+[0m [0mresource  = ""
+          [32m+[0m [0mvalue     = (known after apply)
+        },
+    ]
+  [32m+[0m [0m[1m[0melastic_beanstalk_environment_tier[0m[0m                           = "WebServer"
+  [32m+[0m [0m[1m[0melastic_beanstalk_environment_triggers[0m[0m                       = (known after apply)
+  [32m+[0m [0m[1m[0mprivate_subnet_cidrs[0m[0m                                         = [
+      [32m+[0m [0m"172.16.0.0/19",
+      [32m+[0m [0m"172.16.32.0/19",
+    ]
+  [32m+[0m [0m[1m[0mpublic_subnet_cidrs[0m[0m                                          = [
+      [32m+[0m [0m"172.16.96.0/19",
+      [32m+[0m [0m"172.16.128.0/19",
+    ]
+  [32m+[0m [0m[1m[0mvpc_cidr[0m[0m                                                     = "172.16.0.0/16"[0m
+
+[0m[1mDo you want to perform these actions?[0m
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  [1mEnter a value:[0m [0m
+[0m[1mmodule.subnets.data.aws_availability_zones.available[0]: Reading... [id=2020-10-18 13:35:36.009047 +0000 UTC][0m[0m
+[0m[1mmodule.elastic_beanstalk_application.aws_elastic_beanstalk_application.default: Creating...[0m[0m
+[0m[1mmodule.subnets.data.aws_availability_zones.available[0]: Read complete after 0s [id=2020-10-18 13:35:40.708563 +0000 UTC][0m[0m
+[0m[1mmodule.vpc.aws_vpc.default[0]: Creating...[0m[0m
+[0m[1mmodule.subnets.aws_eip.default[1]: Creating...[0m[0m
+[0m[1mmodule.elastic_beanstalk_environment.aws_s3_bucket.elb_logs[0]: Creating...[0m[0m
+[0m[1mmodule.elastic_beanstalk_environment.aws_iam_role.service: Creating...[0m[0m
+[0m[1mmodule.subnets.aws_eip.default[0]: Creating...[0m[0m
+[0m[1mmodule.elastic_beanstalk_environment.aws_iam_role.ec2: Creating...[0m[0m
+[0m[1mmodule.subnets.aws_eip.default[1]: Creation complete after 1s [id=eipalloc-0e55e9e64420362ce][0m[0m
+[0m[1mmodule.subnets.aws_eip.default[0]: Creation complete after 1s [id=eipalloc-02e9c5b6095b7f7ce][0m[0m
+[0m[1mmodule.elastic_beanstalk_application.aws_elastic_beanstalk_application.default: Creation complete after 1s [id=eg-test-elastic-beanstalk-env][0m[0m
+[0m[1mmodule.elastic_beanstalk_environment.aws_iam_role.ec2: Creation complete after 3s [id=eg-test-elastic-beanstalk-env-eb-ec2][0m[0m
+[0m[1mmodule.elastic_beanstalk_environment.aws_iam_role_policy_attachment.ecr_readonly: Creating...[0m[0m
+[0m[1mmodule.elastic_beanstalk_environment.aws_iam_role_policy_attachment.elastic_beanstalk_multi_container_docker: Creating...[0m[0m
+[0m[1mmodule.elastic_beanstalk_environment.aws_iam_role_policy_attachment.ssm_ec2: Creating...[0m[0m
+[0m[1mmodule.elastic_beanstalk_environment.aws_iam_role_policy_attachment.worker_tier: Creating...[0m[0m
+[0m[1mmodule.elastic_beanstalk_environment.aws_iam_instance_profile.ec2: Creating...[0m[0m
+[0m[1mmodule.elastic_beanstalk_environment.aws_ssm_activation.ec2: Creating...[0m[0m
+[0m[1mmodule.elastic_beanstalk_environment.aws_iam_role_policy.default: Creating...[0m[0m
+[0m[1mmodule.elastic_beanstalk_environment.aws_iam_role_policy_attachment.ssm_automation: Creating...[0m[0m
+[0m[1mmodule.elastic_beanstalk_environment.aws_iam_role.service: Creation complete after 3s [id=eg-test-elastic-beanstalk-env-eb-service][0m[0m
+[0m[1mmodule.elastic_beanstalk_environment.aws_iam_role_policy_attachment.web_tier: Creating...[0m[0m
+[0m[1mmodule.vpc.aws_vpc.default[0]: Creation complete after 3s [id=vpc-0e0000dfb08948c11][0m[0m
+[0m[1mmodule.elastic_beanstalk_environment.aws_iam_role_policy_attachment.service: Creating...[0m[0m
+[0m[1mmodule.elastic_beanstalk_environment.aws_iam_role_policy_attachment.ssm_automation: Creation complete after 2s [id=eg-test-elastic-beanstalk-env-eb-ec2-20201018133951294600000001][0m[0m
+[0m[1mmodule.elastic_beanstalk_environment.aws_iam_role_policy_attachment.enhanced_health[0]: Creating...[0m[0m
+[0m[1mmodule.elastic_beanstalk_environment.aws_iam_role_policy_attachment.elastic_beanstalk_multi_container_docker: Creation complete after 3s [id=eg-test-elastic-beanstalk-env-eb-ec2-20201018133951303800000002][0m[0m
+[0m[1mmodule.elastic_beanstalk_environment.aws_iam_role_policy_attachment.ecr_readonly: Creation complete after 3s [id=eg-test-elastic-beanstalk-env-eb-ec2-20201018133951319900000003][0m[0m
+[0m[1mmodule.elastic_beanstalk_environment.aws_iam_role_policy_attachment.worker_tier: Creation complete after 3s [id=eg-test-elastic-beanstalk-env-eb-ec2-20201018133951413000000006][0m[0m
+[0m[1mmodule.vpc.aws_default_security_group.default[0]: Creating...[0m[0m
+[0m[1mmodule.vpc.aws_internet_gateway.default[0]: Creating...[0m[0m
+[0m[1mmodule.elastic_beanstalk_environment.aws_iam_role_policy_attachment.ssm_ec2: Creation complete after 3s [id=eg-test-elastic-beanstalk-env-eb-ec2-20201018133951330400000004][0m[0m
+[0m[1mmodule.subnets.data.aws_vpc.default[0]: Reading...[0m[0m
+[0m[1mmodule.elastic_beanstalk_environment.aws_security_group.default: Creating...[0m[0m
+[0m[1mmodule.elastic_beanstalk_environment.aws_iam_role_policy_attachment.web_tier: Creation complete after 3s [id=eg-test-elastic-beanstalk-env-eb-ec2-20201018133951401900000005][0m[0m
+[0m[1mmodule.elastic_beanstalk_environment.aws_iam_role_policy_attachment.service: Creation complete after 3s [id=eg-test-elastic-beanstalk-env-eb-service-20201018133951683200000007][0m[0m
+[0m[1mmodule.elastic_beanstalk_environment.aws_iam_role_policy.default: Creation complete after 3s [id=eg-test-elastic-beanstalk-env-eb-ec2:eg-test-elastic-beanstalk-env-eb-default][0m[0m
+[0m[1mmodule.subnets.data.aws_vpc.default[0]: Read complete after 0s [id=vpc-0e0000dfb08948c11][0m[0m
+[0m[1mmodule.subnets.aws_route_table.private[1]: Creating...[0m[0m
+[0m[1mmodule.subnets.aws_route_table.public[0]: Creating...[0m[0m
+[0m[1mmodule.subnets.aws_route_table.private[0]: Creating...[0m[0m
+[0m[1mmodule.subnets.aws_subnet.public[1]: Creating...[0m[0m
+[0m[1mmodule.elastic_beanstalk_environment.aws_iam_instance_profile.ec2: Creation complete after 4s [id=eg-test-elastic-beanstalk-env-eb-ec2][0m[0m
+[0m[1mmodule.subnets.aws_subnet.public[0]: Creating...[0m[0m
+[0m[1mmodule.vpc.aws_internet_gateway.default[0]: Creation complete after 1s [id=igw-01ee8b7c9f4317e07][0m[0m
+[0m[1mmodule.subnets.aws_subnet.private[0]: Creating...[0m[0m
+[0m[1mmodule.vpc.aws_default_security_group.default[0]: Creation complete after 1s [id=sg-073dc04e4e1429d57][0m[0m
+[0m[1mmodule.subnets.aws_subnet.private[1]: Creating...[0m[0m
+[0m[1mmodule.subnets.aws_route_table.private[1]: Creation complete after 1s [id=rtb-08937c63ad58e678a][0m[0m
+[0m[1mmodule.subnets.aws_route_table.private[0]: Creation complete after 1s [id=rtb-0f2478576b9712d15][0m[0m
+[0m[1mmodule.subnets.aws_route_table.public[0]: Creation complete after 1s [id=rtb-072389416b1e5fca0][0m[0m
+[0m[1mmodule.subnets.aws_route.public[0]: Creating...[0m[0m
+[0m[1mmodule.subnets.aws_route.public[0]: Creation complete after 1s [id=r-rtb-072389416b1e5fca01080289494][0m[0m
+[0m[1mmodule.subnets.aws_subnet.public[1]: Creation complete after 2s [id=subnet-066a0ff8c7c24bf98][0m[0m
+[0m[1mmodule.subnets.aws_subnet.public[0]: Creation complete after 1s [id=subnet-0cc3eef8acb257b06][0m[0m
+[0m[1mmodule.subnets.aws_subnet.private[0]: Creation complete after 1s [id=subnet-0aaa40aa9d1fcf27c][0m[0m
+[0m[1mmodule.elastic_beanstalk_environment.aws_iam_role_policy_attachment.enhanced_health[0]: Creation complete after 3s [id=eg-test-elastic-beanstalk-env-eb-service-20201018133953717100000008][0m[0m
+[0m[1mmodule.subnets.aws_route_table_association.public[1]: Creating...[0m[0m
+[0m[1mmodule.subnets.aws_route_table_association.public[0]: Creating...[0m[0m
+[0m[1mmodule.subnets.aws_nat_gateway.default[1]: Creating...[0m[0m
+[0m[1mmodule.subnets.aws_nat_gateway.default[0]: Creating...[0m[0m
+[0m[1mmodule.subnets.aws_network_acl.public[0]: Creating...[0m[0m
+[0m[1mmodule.subnets.aws_route_table_association.public[1]: Creation complete after 0s [id=rtbassoc-0404b6397b579ccc3][0m[0m
+[0m[1mmodule.subnets.aws_route_table_association.public[0]: Creation complete after 0s [id=rtbassoc-07b76eed7de67599f][0m[0m
+[0m[1mmodule.subnets.aws_subnet.private[1]: Creation complete after 1s [id=subnet-0ecb7fdea3514a640][0m[0m
+[0m[1mmodule.subnets.aws_route_table_association.private[0]: Creating...[0m[0m
+[0m[1mmodule.subnets.aws_route_table_association.private[1]: Creating...[0m[0m
+[0m[1mmodule.subnets.aws_network_acl.private[0]: Creating...[0m[0m
+[0m[1mmodule.elastic_beanstalk_environment.aws_security_group.default: Creation complete after 2s [id=sg-03aa2befa32600776][0m[0m
+[0m[1mmodule.subnets.aws_route_table_association.private[1]: Creation complete after 0s [id=rtbassoc-0500165b5b922f159][0m[0m
+[0m[1mmodule.subnets.aws_route_table_association.private[0]: Creation complete after 0s [id=rtbassoc-0f46e9a0c8e875354][0m[0m
+[0m[1mmodule.subnets.aws_network_acl.public[0]: Creation complete after 2s [id=acl-0b9b761929d17fcac][0m[0m
+[0m[1mmodule.subnets.aws_network_acl.private[0]: Creation complete after 2s [id=acl-0528f19ba1a5655a2][0m[0m
+[0m[1mmodule.elastic_beanstalk_environment.aws_ssm_activation.ec2: Creation complete after 9s [id=36f318a1-d487-4618-8f1d-cc92f15e6c66][0m[0m
+[0m[1mmodule.subnets.aws_nat_gateway.default[1]: Still creating... [10s elapsed][0m[0m
+[0m[1mmodule.subnets.aws_nat_gateway.default[0]: Still creating... [10s elapsed][0m[0m
+[0m[1mmodule.subnets.aws_nat_gateway.default[0]: Still creating... [20s elapsed][0m[0m
+[0m[1mmodule.subnets.aws_nat_gateway.default[1]: Still creating... [20s elapsed][0m[0m
+[0m[1mmodule.subnets.aws_nat_gateway.default[0]: Still creating... [30s elapsed][0m[0m
+[0m[1mmodule.subnets.aws_nat_gateway.default[1]: Still creating... [30s elapsed][0m[0m
+[0m[1mmodule.subnets.aws_nat_gateway.default[1]: Still creating... [40s elapsed][0m[0m
+[0m[1mmodule.subnets.aws_nat_gateway.default[0]: Still creating... [40s elapsed][0m[0m
+[0m[1mmodule.subnets.aws_nat_gateway.default[0]: Still creating... [50s elapsed][0m[0m
+[0m[1mmodule.subnets.aws_nat_gateway.default[1]: Still creating... [50s elapsed][0m[0m
+[0m[1mmodule.subnets.aws_nat_gateway.default[1]: Still creating... [1m0s elapsed][0m[0m
+[0m[1mmodule.subnets.aws_nat_gateway.default[0]: Still creating... [1m0s elapsed][0m[0m
+[0m[1mmodule.subnets.aws_nat_gateway.default[0]: Still creating... [1m10s elapsed][0m[0m
+[0m[1mmodule.subnets.aws_nat_gateway.default[1]: Still creating... [1m10s elapsed][0m[0m
+[0m[1mmodule.subnets.aws_nat_gateway.default[0]: Still creating... [1m20s elapsed][0m[0m
+[0m[1mmodule.subnets.aws_nat_gateway.default[1]: Still creating... [1m20s elapsed][0m[0m
+[0m[1mmodule.subnets.aws_nat_gateway.default[1]: Still creating... [1m30s elapsed][0m[0m
+[0m[1mmodule.subnets.aws_nat_gateway.default[0]: Still creating... [1m30s elapsed][0m[0m
+[0m[1mmodule.subnets.aws_nat_gateway.default[1]: Still creating... [1m40s elapsed][0m[0m
+[0m[1mmodule.subnets.aws_nat_gateway.default[0]: Still creating... [1m40s elapsed][0m[0m
+[0m[1mmodule.subnets.aws_nat_gateway.default[0]: Creation complete after 1m47s [id=nat-0e496509694e44075][0m[0m
+[0m[1mmodule.subnets.aws_nat_gateway.default[1]: Still creating... [1m50s elapsed][0m[0m
+[0m[1mmodule.subnets.aws_nat_gateway.default[1]: Creation complete after 1m57s [id=nat-0d1416cc557bbf4fa][0m[0m
+[0m[1mmodule.subnets.aws_route.default[0]: Creating...[0m[0m
+[0m[1mmodule.subnets.aws_route.default[1]: Creating...[0m[0m
+[0m[1mmodule.subnets.aws_route.default[0]: Creation complete after 1s [id=r-rtb-0f2478576b9712d151080289494][0m[0m
+[0m[1mmodule.subnets.aws_route.default[1]: Creation complete after 1s [id=r-rtb-08937c63ad58e678a1080289494][0m[0m

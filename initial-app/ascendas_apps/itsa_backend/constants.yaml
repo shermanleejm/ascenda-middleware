@@ -1,0 +1,10 @@
+# Use this file to state constant configs that can get pushed to public repo
+# **************** DO NOT PUSH PRIVATE KEYS OR PASSWORDS HERE *************************
+
+# change eb-domain whenever you change ElasticBeanstalk environment
+dev-domain: itsa-backend-dev8.ap-southeast-1.elasticbeanstalk.com
+prod-domain: eg-test-terraform-backend-app.eba-gkdtf2vf.ap-southeast-1.elasticbeanstalk.com
+rds:
+  db-name: itsa
+  # rds-host: itsa.cjlb3arilazv.ap-southeast-1.rds.amazonaws.com
+  rds-port: 3306

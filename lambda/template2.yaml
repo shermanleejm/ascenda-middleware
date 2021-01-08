@@ -1,0 +1,166 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: "AWS::Serverless-2016-10-31"
+Description: An AWS Serverless deployment of lambda functions
+Resources:
+    createHandbackFile:
+        Type: "AWS::Serverless::Function"
+        Properties:
+            Handler: index.lambda_handler
+            Runtime: python3.7
+            # CodeUri: ./lambda_function.py
+            InlineCode: |
+                import json
+                import urllib.request
+
+                ## TODO: CHANGE THIS
+                ENDPOINT = "http://eg-test-terraform-backend-app.eba-gkdtf2vf.ap-southeast-1.elasticbeanstalk.com/api/loyaltyprogram/newbatchfile"
+
+                def lambda_handler(event, context):
+                    try:
+                        print (event)
+                        bucket = event["Records"][0]['s3']['bucket']['name']
+                        key = event["Records"][0]['s3']['object']['key']
+                        print (bucket, key)
+                        url_path = ENDPOINT + f"?bucket={bucket}&key={key}"
+                        req = urllib.request.Request(url_path)
+                        response = urllib.request.urlopen(req)
+                        contents = response.read()
+                        print (contents)
+                        return contents
+                    except Exception as e:
+                        print (f"Error is {e}")
+            Description: ""
+            MemorySize: 128
+            Timeout: 300
+            Role: >-
+                arn:aws:iam::731706226892:role/service-role/loyalty-partner-role
+            Events:
+                Schedule1:
+                    Type: Schedule
+                    Properties:
+                        Schedule: rate(1 day)
+            # VpcConfig:
+            #   SecurityGroupIds:
+            #     - sg-0717fa10e232af881
+            #   SubnetIds:
+            #     - subnet-034262533c13e31c7
+            #     - subnet-0e82e659052960d44
+    s3UploadListener:
+        Type: "AWS::Serverless::Function"
+        Properties:
+            Handler: lambda_function.lambda_handler
+            Runtime: python3.7
+            # CodeUri: .
+            InlineCode: |
+                import json
+                import boto3
+                import urllib
+                from urllib import request, parse
+                from datetime import datetime
+
+                ## TODO: CHANGE THIS
+                ENDPOINT = "http://eg-test-terraform-backend-app.eba-gkdtf2vf.ap-southeast-1.elasticbeanstalk.com/api/loyaltyprogram/generatebatchfile"
+                BEST_DATE = 20200801
+
+                def lambda_handler(event, context):
+                    date = datetime.now().strftime("%Y%m%d")
+                    ## TODO: Change for production
+                    # if int(date) > BEST_DATE:
+                    #     date = str(BEST_DATE)
+                    data = parse.urlencode({"date": date}).encode("utf-8")
+                    # data = json.dumps(data).encode("utf-8")
+                    req = request.Request(ENDPOINT, data=data)
+                    resp = request.urlopen(req)
+                    print (resp.read())
+                    return "Hello World, Sherman was here"
+            Description: ""
+            MemorySize: 128
+            Timeout: 300
+            Role: >-
+                arn:aws:iam::731706226892:role/service-role/LoyaltyPartnerLambda
+            Events:
+                BucketEvent1:
+                    Type: S3
+                    Properties:
+                        Bucket:
+                            Ref: Bucket1
+                        Events:
+                            - "s3:ObjectCreated:*"
+            VpcConfig:
+                SecurityGroupIds:
+                    - sg-007ac36b18d75df5f
+                SubnetIds:
+                    - subnet-025664adf0602ca48
+                    - subnet-034262533c13e31c7
+                    - subnet-0e82e659052960d44
+                    - subnet-011b66e17c3b9b32e
+                    - subnet-029a884180959f1f4
+    Bucket1:
+        Type: "AWS::S3::Bucket"
+        Properties:
+            BucketName: "loyalty-partner-handback-files"
+            LifecycleConfiguration:
+                Rules:
+                    - Id: "journeyToColdStorage"
+                      Status: "Enabled"
+            CorsConfiguration:
+                CorsRules:
+                    - AllowedHeaders:
+                          - "Authorization"
+                      AllowedMethods:
+                          - "PUT"
+                          - "POST"
+                          - "GET"
+                          - "DELETE"
+                      AllowedOrigins:
+                          - "*"
+
+    selfSignedS3:
+        Type: "AWS::Serverless::Function"
+        Properties:
+            Handler: index.handler
+            Runtime: nodejs12.x
+            # CodeUri: .
+            InlineCode: |
+                var AWS = require('aws-sdk');
+                var s3 = new AWS.S3({
+                    signatureVersion: 'v4',
+                });
+
+                exports.handler = (event, context, callback) => {
+                    let ts = Date.now();
+                    let date_ob = new Date(ts);
+                    let day = date_ob.getDate();
+                    let month = date_ob.getMonth() + 1;
+                    let year = date_ob.getFullYear();
+
+                    let hours = date_ob.getHours();
+                    let minutes = date_ob.getMinutes();
+                    let seconds = date_ob.getSeconds();
+
+                    const url = s3.getSignedUrl('putObject', {
+                        Bucket: 'loyalty-partner-handback-files',
+                        // Key: year + "-" + month + "-" + day  + "_" + hours + ":" + minutes + ":" + seconds + ".csv",
+                        Key: event.name,
+                        Expires: 60,
+                    });
+
+
+                    callback(null, url);
+                };
+            Description: ""
+            MemorySize: 128
+            Timeout: 300
+            Role: >-
+                arn:aws:iam::731706226892:role/service-role/loyalty-partner-role
+            Events:
+                Api1:
+                    Type: Api
+                    Properties:
+                        Path: /self-signed-s3
+                        Method: GET
+                Api2:
+                    Type: Api
+                    Properties:
+                        Path: /get-self-signed-s3
+                        Method: GET

@@ -1,0 +1,63 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Metadata:
+  Generator: "former2"
+Description: "This is to create iam roles and s3 buckets"
+Resources:
+  IAMRole:
+    Type: "AWS::IAM::Role"
+    Properties:
+      Path: "/"
+      RoleName: "LoyaltyPartnerLambda"
+      AssumeRolePolicyDocument: "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"lambda.amazonaws.com\"},\"Action\":\"sts:AssumeRole\"}]}"
+      MaxSessionDuration: 3600
+      ManagedPolicyArns: 
+      - "arn:aws:iam::aws:policy/AmazonEC2FullAccess"
+      - "arn:aws:iam::aws:policy/AmazonS3FullAccess"
+      - "arn:aws:iam::aws:policy/CloudWatchFullAccess"
+      - "arn:aws:iam::aws:policy/AWSElasticBeanstalkFullAccess"
+      Description: "Allows Lambda functions to call AWS services on your behalf."
+
+  S3Bucket:
+    Type: "AWS::S3::Bucket"
+    Properties:
+      BucketName: "loyalty-partner-batch-files"
+      LifecycleConfiguration: 
+        Rules: 
+        - 
+          Id: "JourneyToColdStorage"
+          Status: "Enabled"
+
+  S3Bucket2:
+    Type: "AWS::S3::Bucket"
+    Properties:
+      BucketName: "loyalty-partner-handback-files"
+      LifecycleConfiguration: 
+        Rules: 
+        - 
+          Id: "journeyToColdStorage"
+          Status: "Enabled"
+      CorsConfiguration: 
+        CorsRules: 
+        - 
+          AllowedHeaders: 
+          - "Authorization"
+          AllowedMethods: 
+          - "PUT"
+          - "POST"
+          - "GET"
+          - "DELETE"
+          AllowedOrigins: 
+          - "*"
+      NotificationConfiguration: 
+        LambdaConfigurations: 
+        - 
+          Event: "s3:ObjectCreated:*"
+          Function: !Sub "arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:s3UploadListener"
+
+  S3Bucket3:
+    Type: "AWS::S3::Bucket"
+    Properties:
+      BucketName: "loyalty-partner-frontend-static"
+      WebsiteConfiguration: 
+        IndexDocument: "index.html"
+

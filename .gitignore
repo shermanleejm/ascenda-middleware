@@ -1,0 +1,66 @@
+virt
+itsa_backend/api/__pycache__/*
+itsa_backend/__pycache__/*
+itsa_backend/api/migrations/__pycache__/*
+itsa_backend/itsa_backend/__pycache__/*
+*.pyc
+itsa_backend/itsa_backend/__pycache__/*.*.pyc
+*.DS_Store
+venv
+.vscode
+*.pytest_cache
+*__pycache__
+.DS_Store
+.DS_Store
+terraform/.terraform/plugins/registry.terraform.io/hashicorp/aws/2.70.0/darwin_amd64/terraform-provider-aws_v2.70.0_x4
+terraform/.terraform/plugins/selections.json
+.terraform/
+.vagrant/
+*.tfstate
+*.tfstate.backup
+*.tfstate.lock.info
+
+# logs
+*.log
+
+# Directories
+.terraform/
+.vagrant/
+
+# SSH Keys
+*.pem
+
+# Backup files
+*.bak
+
+# Ignored Terraform files
+*gitignore*.tf
+
+# Ignore Mac .DS_Store files
+*.DS_Store
+
+# Ignored vscode files
+.vscode/
+
+# Ignore Any Generated JSON Files
+operations/automation-script/apply.json
+operations/automation-script/configversion.json
+operations/automation-script/run.template.json
+operations/automation-script/run.json
+operations/automation-script/variable.template.json
+operations/automation-script/variable.json
+operations/automation-script/workspace.template.json
+operations/automation-script/workspace.json
+operations/sentinel-policies-scripts/create-policy.template.json
+operations/sentinel-policies-scripts/create-policy.json
+operations/variable-scripts/variable.template.json
+operations/variable-scripts/variable.json
+
+# front end build files
+/loyalty-partner-frontend/build
+!rds-ca-2019-root.pem
+
+node_modules
+.DS_Store
+
+*.env

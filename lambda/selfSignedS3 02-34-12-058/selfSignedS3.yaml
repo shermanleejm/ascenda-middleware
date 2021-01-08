@@ -1,0 +1,26 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: An AWS Serverless Specification template describing your function.
+Resources:
+  selfSignedS3:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: index.handler
+      Runtime: nodejs12.x
+      CodeUri: .
+      Description: ''
+      MemorySize: 128
+      Timeout: 3
+      Role: >-
+        arn:aws:iam::731706226892:role/service-role/uploadBatchFile-role-dxu97bim
+      Events:
+        Api1:
+          Type: Api
+          Properties:
+            Path: /self-signed-s3
+            Method: GET
+        Api2:
+          Type: Api
+          Properties:
+            Path: /get-self-signed-s3
+            Method: GET
